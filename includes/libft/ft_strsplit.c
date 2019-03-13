@@ -12,26 +12,6 @@
 
 #include "libft.h"
 
-static int		ft_word_count(char const *s, char c)
-{
-	int	word;
-	int	i;
-
-	i = 0;
-	word = 0;
-	if (s == NULL)
-		return (int)(NULL);
-	while (s[i])
-	{
-		if (s[i] == c && s[i + 1] != c)
-			word++;
-		i++;
-	}
-	if (s[0] != '\0')
-		word++;
-	return (word);
-}
-
 static char		*ft_set_word(char *s, char c, int *i)
 {
 	char	*wrd;

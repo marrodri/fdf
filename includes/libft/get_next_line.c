@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 int		ft_assign_line(char **line, char **str, int fd, int ret)
 {
@@ -20,7 +20,7 @@ int		ft_assign_line(char **line, char **str, int fd, int ret)
 	len = 0;
 	while (str[fd][len] != '\n' && str[fd][len] != '\0')
 		len++;
-	if (str[fd][len] == '\0')
+	if (str[fd][len] == '\n')
 	{
 		*line = ft_strsub(str[fd], 0, len);
 		tmp = ft_strdup(str[fd] + len + 1);

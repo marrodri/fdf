@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_word_count.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/22 23:12:25 by marrodri          #+#    #+#             */
-/*   Updated: 2019/01/29 16:02:57 by marrodri         ###   ########.fr       */
+/*   Created: 2019/03/10 21:24:02 by marrodri          #+#    #+#             */
+/*   Updated: 2019/03/10 21:24:12 by marrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 1
-# include <unistd.h>
-# include <stdlib.h>
-# include "./libft/libft.h"
+#include "libft.h"
 
-int		get_next_line(const int fd, char **line);
-int		ft_assign_line(char **line, char **str, int fd, int ret);
-int		ft_read_line(int fd, char *buff, char **str);
+int		ft_word_count(char const *s, char c)
+{
+	int	word;
+	int	i;
 
-#endif
+	i = 0;
+	word = 0;
+	if (s == NULL)
+		return (int)(NULL);
+	while (s[i])
+	{
+		if (s[i] == c && s[i + 1] != c)
+			word++;
+		i++;
+	}
+	if (s[0] != '\0')
+		word++;
+	return (word);
+}

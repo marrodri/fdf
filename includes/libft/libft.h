@@ -12,6 +12,7 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# define BUFF_SIZE 1
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -84,4 +85,8 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void				ft_print_bits(unsigned char octet);
 unsigned char		reverse_bits(unsigned char octet);
 unsigned char		swap_bits(unsigned char octet);
+int					ft_word_count(char const *s, char c);
+int					get_next_line(const int fd, char **line);
+int					ft_assign_line(char **line, char **str, int fd, int ret);
+int					ft_read_line(int fd, char *buff, char **str);
 #endif

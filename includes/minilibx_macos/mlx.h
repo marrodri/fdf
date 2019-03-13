@@ -77,6 +77,7 @@ int	mlx_pixel_put(void *mlx_ptr, void *win_ptr, int x, int y, int color);
 
 void	*mlx_new_image(void *mlx_ptr,int width,int height);
 /*
+** is a handle of img_ptr 
 **  return void *0 if failed
 */
 char	*mlx_get_data_addr(void *img_ptr, int *bits_per_pixel,

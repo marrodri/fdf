@@ -6,18 +6,34 @@
 /*   By: marrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 15:11:21 by marrodri          #+#    #+#             */
-/*   Updated: 2019/03/07 19:12:59 by marrodri         ###   ########.fr       */
+/*   Updated: 2019/03/08 19:06:29 by marrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
+#include "fdf_header.h"
 
-int main()
+int main(int argc, char **argv)
 {
-	void *mlx_ptr;
-	void *win_ptr;
+	t_mlx 	*mlx;
+	t_map 	*map;
+	t_line 	*line;
+	t_img	*img;
+	int 	fd;
 
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 500, 500, "mlx 42");
-	mlx_loop(mlx_ptr);
+	if (argc == 2)
+	{
+		fd = open(argv[1], O_RDONLY);
+		if(!(check_file(fd, &(map->str_map))))
+		{
+			ft_putstr("Found wrong line length. Exiting.\n");
+			return (0);
+		}
+		//window_init(&mlx->mlx_ptr, &mlx->win_ptr, &mlx->img_ptr);
+		
+	}
+	else
+	{
+		ft_putstr("Usage : ./fdf <filename> [ case_size z_size ]");
+	}
+	return (0);
 }
