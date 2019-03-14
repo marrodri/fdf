@@ -17,6 +17,8 @@
 # include "./includes/libft/libft.h"
 # include "mlx.h"
 
+#include <stdio.h>
+
 typedef struct	s_line
 {
 	int			*x1;
@@ -27,7 +29,7 @@ typedef struct	s_line
 
 typedef struct	s_map
 {
-	char 		**str_map;
+	char 		***map;
 	int			x;
 	int			y;
 	int			z;
@@ -47,5 +49,6 @@ typedef struct	s_mlx
 }				t_mlx;
 
 void			window_init(void *mlx_ptr, void *win_ptr, void *img_ptr);
-int				check_file(int fd, char **str_map);
+int				check_valid_file(const int fd, t_map *map);
+char			***create_map(char **str_spltd);
 #endif

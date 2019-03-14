@@ -20,7 +20,7 @@ static char		*ft_set_word(char *s, char c, int *i)
 
 	index = 0;
 	size = ft_strlen(s);
-	wrd = (char*)malloc(size * sizeof(char *));
+	wrd = (char*)malloc((size + 1) * sizeof(char));
 	while (s[*i] != c && s[*i])
 	{
 		wrd[index] = s[*i];
@@ -45,7 +45,7 @@ char			**ft_strsplit(char const *s, char c)
 	words = ft_word_count(s, c);
 	if (s == NULL)
 		return (NULL);
-	str = (char**)malloc(words * sizeof(char**));
+	str = (char**)malloc((words + 1) * sizeof(char*));
 	if (str == NULL)
 		return (NULL);
 	while (s[i] == c && s[i])
