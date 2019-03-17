@@ -13,90 +13,112 @@
 #include "fdf_header.h"
 #include <stdio.h>
 
-char ***create_map(char **str_spltd)
+int **assign_map(int **map, char **str_map)
 {
-	char ***map;
-	int y;
 	int x;
+	int y;
 	int i;
-	int lines;
-	
-	i = 0;
-	x = 0;
+
 	y = 0;
-	lines = 0;
-
-	while (str_spltd[lines] != NULL)
-		lines++;
-
-	if ((map = (char ***)malloc((lines + 1) * sizeof(char **))) == NULL)
-		return (NULL);
-	
-	while (str_spltd[i] != NULL)
+	while (map[y])
 	{
-		map[i] = ft_strsplit(str_spltd[i], ' ');
-		i++;
+		x = 0;
+		i = 0;
+		while (str_map[y][i])
+		{
+			if (str_map[y][i] != ' '  && str_map[y][i])
+			{
+				// printf("x is %d\n",x);
+				if(i == 0)
+				{
+					// printf("i is 0\n");
+					map[y][x] = ft_atoi(&str_map[y][i]);
+					x++;
+				}
+				else if (str_map[y][i - 1] == ' ')
+				{
+					// printf("there a space behind before str[%d][%d]\n", y, i);
+					// printf("remaining string |%s|\n", &str_map[y][i]);
+					// printf("atoi is |%d|\n", ft_atoi(&str_map[y][i]));
+					map[y][x] = ft_atoi(&str_map[y][i]);
+					x++;
+				}
+			}
+			i++;
+		}
+		y++;
 	}
-	map[lines] = NULL;
 	return (map);
 }
 
-// char **assign_map(const int fd)
-// {
-//     char    **tmp;
-//     char    *str;
-//     int     ret;
-//     int     size;
-//     char buff[BUFF_SIZE + 1];
-
-//     size = 0;
-//     while ((ret = read(fd, buff, BUFF_SIZE)) > 0)
-//     {
-//         buff[ret] = '\0';
-//         size = size + ret;
-//         printf("ret |%d| size|%d|\n", ret, size);
-//     }
-//     printf("size of map is |%d|\n", size);
-//     return (NULL);
-// }
-
-int check_valid_file(const int fd, t_map *map)
+int **create_map(int **map, int y, int x)
 {
-    char *line;
-    char *str_map;
-    int count;
-    int x;
-    int y;
+	int i;
 
-    count = 0;
-    x = 0;
-    y= 0;
-    str_map = ft_strnew(1);
-    while(get_next_line(fd, &line))
-    {
-        count = ft_word_count(line, ' ');
-        if (x == 0)
-            x = count;
-        if (count != x)
-        {
-            // printf("error, x is |%d| and count is |%d|\n",x, count);
-            return 0;
-        }
-        str_map = ft_strjoin(str_map, line);
-        str_map = ft_strjoin(str_map, "\n");
-        y++;
-    }
-    str_map = ft_strtrim(str_map);
-    count = ft_strlen(str_map);
-    printf("count |%d|\n", count);
-    free(line);
-    printf("the map size x|%d| y|%d|\n", x, y);
-    printf("and map is:\n%s\n", str_map);
-    //str_map = assign_map(fd);
-    // for(int i = 0; str_map[i] != NULL; i++)
-    // {
-    //     printf("string %d is |%s|", i, str_map[i]);
-    // }
-    printf("+++EXIT CHECK_VALID_FILE+++\n");
-    return (1);
+	i = 0;
+	// printf("x|%d|, y|%d|\n", x, y);
+	if ((map = (int **)malloc((y + 1) * sizeof(int *))) == NULL)
+		return (NULL);
+	// printf("malloc y ready\n");
+	while (i < y)
+	{
+		// printf("allocating %d line\n", i);
+		if ((map[i] = (int *)malloc((x + 1) * sizeof(int))) == NULL)
+			return (NULL);
+		i++;
+	}
+	map[y] = NULL;
+	i = 0;
+	while(map[i])
+	{
+		map[i][x] = (int)NULL;
+		i++;
+	}
+	// printf("map FULLY CREATED y|%d| x|%d|!!!\n", y, x);
+	// printf("--- EXIT MAP CREATOR ---\n");
+	return (map);
+}
+
+int check_valid_file(const int fd, t_map **st_map)
+{
+	char *line;
+	char *str_map;
+	char *temp;
+	char **splt_map;
+	int count;
+
+	if ((*st_map = malloc(sizeof(t_map))) == NULL)
+		return (0);
+
+	count = 0;
+	(*st_map)->x = 0;
+	(*st_map)->y = 0;
+	str_map = ft_strnew(1);
+	while(get_next_line(fd, &line))
+	{
+		count = ft_word_count(line, ' ');
+		if ((*st_map)->x == 0)
+			(*st_map)->x = count;
+		if (count != (*st_map)->x)
+			return 0;
+		temp = str_map;
+		str_map = ft_strjoin(str_map, line);
+		free(temp);
+		free(line);
+		temp = str_map;
+		str_map = ft_strjoin(str_map, "\n");
+		free(temp);
+		(*st_map)->y++;
+	}
+
+	temp = str_map;
+	str_map = ft_strtrim(str_map);
+	// printf("%s\n",str_map);
+	splt_map = ft_strsplit(str_map, '\n');
+	(*st_map)->map = create_map((*st_map)->map, (*st_map)->y, (*st_map)->x);
+	(*st_map)->map = assign_map((*st_map)->map, splt_map);
+	free(temp);
+	free(str_map);
+	// printf("--- exitng check_valid_file and freeing unecesary file ---\n");
+	return (1);
 }

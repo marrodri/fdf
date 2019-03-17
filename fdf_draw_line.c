@@ -66,7 +66,7 @@ void draw_line_top_view(double x0, double y0, double x1, double y1, char *addr, 
 	return ;
 }
 
-void window_init(void *mlx_ptr, void *win_ptr, void *img_ptr)
+void window_init(t_mlx **st_mlx)
 {
 	char *addr;
 	int bpp;
@@ -75,17 +75,20 @@ void window_init(void *mlx_ptr, void *win_ptr, void *img_ptr)
 	int x;
 	int y;
 
+	if ((*st_mlx = malloc(sizeof(t_mlx))) == NULL)
+		return ;
+
 	x = 250;
 	y = 250;
-	mlx_ptr = mlx_init();
-	win_ptr = mlx_new_window(mlx_ptr, 2000, 2000, "mlx 42");
-	img_ptr = mlx_new_image(mlx_ptr, 2000, 2000);
-	addr = mlx_get_data_addr(img_ptr, &bpp, &sl, &endian);
+	(*st_mlx)->mlx_ptr = mlx_init();
+	(*st_mlx)->win_ptr = mlx_new_window((*st_mlx)->mlx_ptr, 900, 900, "mlx 42");
+	(*st_mlx)->img_ptr = mlx_new_image((*st_mlx)->mlx_ptr, 2000, 2000);
+	addr = mlx_get_data_addr((*st_mlx)->img_ptr, &bpp, &sl, &endian);
 	bpp /= 8;
-	draw_line_top_view(100, 900, 900, 100, addr, bpp);
-	mlx_put_image_to_window(mlx_ptr, win_ptr, img_ptr, 0, 0);
-	mlx_key_hook(win_ptr, deal_key, (void *)0);
-	mlx_loop(mlx_ptr);
+	draw_line_top_view(100, 100, 125, 100, addr, bpp);
+	mlx_put_image_to_window((*st_mlx)->mlx_ptr, (*st_mlx)->win_ptr, (*st_mlx)->img_ptr, 0, 0);
+	mlx_key_hook((*st_mlx)->win_ptr, deal_key, (void *)0);
+	mlx_loop((*st_mlx)->mlx_ptr);
     return ;
 }
 

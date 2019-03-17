@@ -12,9 +12,6 @@
 
 #include "fdf_header.h"
 
-
-
-
 int main(int argc, char **argv)
 {
 	t_mlx 	*st_mlx;
@@ -23,43 +20,38 @@ int main(int argc, char **argv)
 	t_img	*st_img;
 	int 	fd;
 
-
-
-
+	// printf("drawing a line\n");
+	// window_init(&st_mlx);
  	if (argc == 2)
  	{
  		fd = open(argv[1], O_RDONLY);
- 		if(!(check_valid_file(fd, st_map)))
+ 		if(!(check_valid_file(fd, &st_map)))
  		{
 			ft_putstr("Found wrong line length. Exiting.\n");
 			return (0);
 		}
 
+		int y;
+		int x;
 
-
+		x = 0;
+		y = 0;
+		printf("map is y|%d| x|%d|\n", st_map->y, st_map->x);
+		while(y < st_map->y)
+		{
+			x = 0;
+			while(x < st_map->x)
+			{
+				printf("map: y[%d],x[%d] is no.|%d|\n", y, x, st_map->map[y][x]);
+				x++;
+			}
+			y++;
+		}
 	}
 	else
 	{
-		ft_putstr("Usage : ./fdf <filename> [ case_size z_size ]");
+		ft_putstr("Usage : ./fdf <filename> [ case_size z_size ]\n");
 	}
+	// sleep(5);
 	return (0);
 }
-
-		// char **test;
-		// char m[100] = "00 01 02,00xf123fd 03 04  05 \n 10 11 12 13 14 15\n 20 21 22 23 24 25";
-		// test = ft_strsplit(m,'\n');
-		// st_map->map = create_map(test);
-		// //window_init(&mlx->mlx_ptr, &mlx->win_ptr, &mlx->img_ptr);
-		// int x = 0;
-		// int y = 0;
-		// while (st_map->map[y] != NULL)
-		// {
-		// 	printf("LOOP: y is %d\n", y);
-		// 	x = 0;
-		// 	while (st_map->map[y][x])
-		// 	{
-		// 		printf("map [%d][%d] |%s|\n", y, x, st_map->map[y][x]);
-		// 		x++;
-		// 	}
-		// 	y++;
-		// }

@@ -21,24 +21,25 @@
 
 typedef struct	s_line
 {
-	int			*x1;
-	int			*y1;
-	int			*x2;
-	int			*y2;
+	int			x1;
+	int			y1;
+	int			x2;
+	int			y2;
 }				t_line;
 
 typedef struct	s_map
 {
-	char 		***map;
 	int			x;
 	int			y;
-	int			z;
+	int			**map;
 }				t_map;
 
 typedef struct	s_img
 {
 	char		*addr;
 	int			bpp;
+	int			endian;
+	int			sl;
 }				t_img;
 
 typedef struct	s_mlx
@@ -48,7 +49,12 @@ typedef struct	s_mlx
 	void		*img_ptr;
 }				t_mlx;
 
-void			window_init(void *mlx_ptr, void *win_ptr, void *img_ptr);
-int				check_valid_file(const int fd, t_map *map);
-char			***create_map(char **str_spltd);
+typedef struct s_app
+{
+
+}				t_app;
+
+void			window_init(t_mlx **st_mlx);
+int				check_valid_file(const int fd, t_map **st_map);
+int				**create_map(int **map, int y, int x);
 #endif
