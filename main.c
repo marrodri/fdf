@@ -30,7 +30,6 @@ int main(int argc, char **argv)
 			ft_putstr("Found wrong line length. Exiting.\n");
 			return (0);
 		}
-
 		int y;
 		int x;
 
@@ -47,6 +46,7 @@ int main(int argc, char **argv)
 			}
 			y++;
 		}
+		fdf_init(&st_mlx, st_map);
 	}
 	else
 	{

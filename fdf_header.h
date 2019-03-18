@@ -12,6 +12,7 @@
 
 #ifndef FDF_HEADER_H
 # define FDF_HEADER_H
+# define COLOR 0xFFFFFF
 # include <math.h>
 # include <fcntl.h>
 # include "./includes/libft/libft.h"
@@ -26,6 +27,12 @@ typedef struct	s_line
 	int			x2;
 	int			y2;
 }				t_line;
+
+typedef struct	s_cont
+{
+	int			z;
+	int			color;
+}				t_cont;
 
 typedef struct	s_map
 {
@@ -57,4 +64,6 @@ typedef struct s_app
 void			window_init(t_mlx **st_mlx);
 int				check_valid_file(const int fd, t_map **st_map);
 int				**create_map(int **map, int y, int x);
+
+void			fdf_init(t_mlx **st_mlx, t_map *st_map);
 #endif
