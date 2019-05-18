@@ -46,7 +46,7 @@ int main(int argc, char **argv)
 			}
 			y++;
 		}
-		fdf_init(&st_mlx, st_map);
+		fdf_init(&st_mlx, &st_img, st_map);
 	}
 	else
 	{

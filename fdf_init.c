@@ -23,7 +23,7 @@ void set_img()
 
 }
 
-void fdf_init(t_mlx **st_mlx, t_img **st_img, t_map *st_map)
+void	fdf_init(t_mlx **st_mlx, t_img **st_img, t_map *st_map)
 {
 	if ((*st_mlx = malloc(sizeof(t_mlx))) == NULL)
 		return ;
@@ -34,6 +34,5 @@ void fdf_init(t_mlx **st_mlx, t_img **st_img, t_map *st_map)
 	(*st_mlx)->mlx_ptr = mlx_init();
 	(*st_mlx)->win_ptr = mlx_new_window((*st_mlx)->mlx_ptr, (st_map->x) * 200, (st_map->y) * 200, "test window");
 	(*st_mlx)->img_ptr = mlx_new_image((*st_mlx)->mlx_ptr, (st_map->x) * 200, (st_map->y) * 200);
-	()->
 	mlx_loop((*st_mlx)->mlx_ptr);
 }

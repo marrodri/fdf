@@ -85,6 +85,7 @@ void window_init(t_mlx **st_mlx)
 	(*st_mlx)->img_ptr = mlx_new_image((*st_mlx)->mlx_ptr, 2000, 2000);
 	addr = mlx_get_data_addr((*st_mlx)->img_ptr, &bpp, &sl, &endian);
 	bpp /= 8;
+	
 	draw_line_top_view(100, 100, 125, 100, addr, bpp);
 	mlx_put_image_to_window((*st_mlx)->mlx_ptr, (*st_mlx)->win_ptr, (*st_mlx)->img_ptr, 0, 0);
 	mlx_key_hook((*st_mlx)->win_ptr, deal_key, (void *)0);

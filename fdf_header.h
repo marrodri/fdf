@@ -13,6 +13,8 @@
 #ifndef FDF_HEADER_H
 # define FDF_HEADER_H
 # define COLOR 0xFFFFFF
+# define X_PIX 1000
+# define Y_PIX 1000
 # include <math.h>
 # include <fcntl.h>
 # include "./includes/libft/libft.h"
@@ -27,6 +29,19 @@ typedef struct	s_line
 	int			x2;
 	int			y2;
 }				t_line;
+
+
+typedef struct s_vert
+{
+	int x;
+	int y;
+	int z;
+}				t_vert;
+
+typedef struct s_index
+{
+	t_vert 	*buff; //[0, 1, 2, 3, 4, 5] 6 verts registered
+}			t_index;
 
 typedef struct	s_cont
 {
@@ -65,5 +80,5 @@ void			window_init(t_mlx **st_mlx);
 int				check_valid_file(const int fd, t_map **st_map);
 int				**create_map(int **map, int y, int x);
 
-void			fdf_init(t_mlx **st_mlx, t_map *st_map);
+void	fdf_init(t_mlx **st_mlx, t_img **st_img, t_map *st_map);
 #endif
