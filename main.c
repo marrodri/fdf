@@ -16,7 +16,6 @@ int main(int argc, char **argv)
 {
 	t_mlx 	*st_mlx;
 	t_map 	*st_map;
-	t_line 	*st_line;
 	t_img	*st_img;
 	int 	fd;
 

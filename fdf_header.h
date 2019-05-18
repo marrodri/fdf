@@ -22,13 +22,13 @@
 
 #include <stdio.h>
 
-typedef struct	s_line
-{
-	int			x1;
-	int			y1;
-	int			x2;
-	int			y2;
-}				t_line;
+// typedef struct	s_line
+// {
+// 	int			x1;
+// 	int			y1;
+// 	int			x2;
+// 	int			y2;
+// }				t_line;
 
 
 typedef struct s_vert
@@ -38,16 +38,10 @@ typedef struct s_vert
 	int z;
 }				t_vert;
 
-typedef struct s_index
+typedef struct	s_quad
 {
-	t_vert 	*buff; //[0, 1, 2, 3, 4, 5] 6 verts registered
-}			t_index;
-
-typedef struct	s_cont
-{
-	int			z;
-	int			color;
-}				t_cont;
+	t_vert		quad[4]; 
+}				t_quad;
 
 typedef struct	s_map
 {
@@ -71,9 +65,10 @@ typedef struct	s_mlx
 	void		*img_ptr;
 }				t_mlx;
 
-typedef struct s_app
-{
-
+typedef struct	s_app
+{						//buff_quad = 2;
+	t_quad		*quad_buff; //buff[0] == {0,1,3,4} buff[1]
+	t_vert		*vert_buff; //[0, 1, 2, 3, 4, 5] 6 verts registered
 }				t_app;
 
 void			window_init(t_mlx **st_mlx);
