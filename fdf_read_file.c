@@ -20,15 +20,16 @@ void assign_buff(char **str_map, t_map *st_map, t_app *st_app)
 	int i;
 	int size;
 	int buff;
-
+	int quad_size;
 
 	z = 0;
 	buff = 0;
 	size = (st_map->x) * (st_map->z);
+	quad_size = (st_map->x - 1) * (st_map->z - 1);
 	st_app = malloc(sizeof(t_app));
 	printf("size is |%d|\n", size);
 	st_app->vert_buff = malloc((size) * sizeof(t_vert));
-	// st_app->quad_buff = malloc((size * 4) * sizeof(t_quad));
+	st_app->quad_buff = malloc((size) * sizeof(t_quad));
 
 	while (str_map[z])
 	{
@@ -66,10 +67,14 @@ void assign_buff(char **str_map, t_map *st_map, t_app *st_app)
 	}
 	buff = 0;
 	while(buff < size)
-		{
-			printf("x[%d],y[%d],z[%d], vert no.|%d|\n", st_app->vert_buff[buff].x, st_app->vert_buff[buff].y, st_app->vert_buff[buff].z, buff);
-			buff++;
-		}
+	{
+
+	}
+	// while(buff < size)
+	// {
+	// 	printf("x[%d],y[%d],z[%d], vert no.|%d|\n", st_app->vert_buff[buff].x, st_app->vert_buff[buff].y, st_app->vert_buff[buff].z, buff);
+	// 	buff++;
+	// }
 
 	printf("finished\n");
 	return ;
