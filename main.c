@@ -14,17 +14,18 @@
 
 int main(int argc, char **argv)
 {
-	t_mlx 	*st_mlx;
-	t_map 	*st_map;
+	t_app	*st_app;
+	t_mlx	*st_mlx;
+	t_map	*st_map;
 	t_img	*st_img;
-	int 	fd;
+	int		fd;
 
 	// printf("drawing a line\n");
 	// window_init(&st_mlx);
  	if (argc == 2)
  	{
  		fd = open(argv[1], O_RDONLY);
- 		if(!(check_valid_file(fd, &st_map)))
+ 		if(!(check_valid_file(fd, &st_map, &st_app)))
  		{
 			ft_putstr("Found wrong line length. Exiting.\n");
 			return (0);
@@ -34,13 +35,13 @@ int main(int argc, char **argv)
 
 		x = 0;
 		y = 0;
-		printf("map is y|%d| x|%d|\n", st_map->y, st_map->x);
-		while(y < st_map->y)
+		// printf("map is y|%d| x|%d|\n", st_map->z, st_map->x);
+		while(y < st_map->z)
 		{
 			x = 0;
 			while(x < st_map->x)
 			{
-				printf("map: y[%d],x[%d] is no.|%d|\n", y, x, st_map->map[y][x]);
+				// printf("map: y[%d],x[%d] is no.|%d|\n", y, x, st_map->map[y][x]);
 				x++;
 			}
 			y++;

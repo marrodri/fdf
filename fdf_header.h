@@ -46,8 +46,8 @@ typedef struct	s_quad
 typedef struct	s_map
 {
 	int			x;
-	int			y;
-	int			**map;
+	int			z;
+	// int			**map;
 }				t_map;
 
 typedef struct	s_img
@@ -72,7 +72,7 @@ typedef struct	s_app
 }				t_app;
 
 void			window_init(t_mlx **st_mlx);
-int				check_valid_file(const int fd, t_map **st_map);
+int				check_valid_file(const int fd, t_map **st_map, t_app **st_app);
 int				**create_map(int **map, int y, int x);
 
 void	fdf_init(t_mlx **st_mlx, t_img **st_img, t_map *st_map);
