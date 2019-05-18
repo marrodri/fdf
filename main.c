@@ -34,8 +34,8 @@ int main(int argc, char **argv)
 		int x;
 		int buff = 0;
 
-		t_vert *test_vert = st_app->vert_buff;
 		printf("||| or here? |||\n");
+		// t_vert *test_vert = st_app->vert_buff;
 
 		x = 0;
 		y = 0;

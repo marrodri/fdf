@@ -66,10 +66,21 @@ void assign_buff(char **str_map, t_map *st_map, t_app *st_app)
 		z++;
 	}
 	buff = 0;
-	while(buff < size)
+	i = 0;
+	while(buff < quad_size)
 	{
-
+		st_app->quad_buff[buff].quad[0] = st_app->vert_buff[i];
+		st_app->quad_buff[buff].quad[1] = st_app->vert_buff[i + 1];
+		st_app->quad_buff[buff].quad[2] = st_app->vert_buff[i + st_map->x];
+		st_app->quad_buff[buff].quad[3] = st_app->vert_buff[i + st_map->x + 1];
+		if((i + 1) == (st_map->x -1))
+		{
+			i++;
+		}
+		i++;
+		buff++;
 	}
+
 	// while(buff < size)
 	// {
 	// 	printf("x[%d],y[%d],z[%d], vert no.|%d|\n", st_app->vert_buff[buff].x, st_app->vert_buff[buff].y, st_app->vert_buff[buff].z, buff);
