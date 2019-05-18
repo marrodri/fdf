@@ -32,20 +32,30 @@ int main(int argc, char **argv)
 		}
 		int y;
 		int x;
+		int buff = 0;
+
+		t_vert *test_vert = st_app->vert_buff;
+		printf("||| or here? |||\n");
 
 		x = 0;
 		y = 0;
 		// printf("map is y|%d| x|%d|\n", st_map->z, st_map->x);
-		while(y < st_map->z)
+		// while(y < st_map->z)
+		// {
+		// 	x = 0;
+		// 	while(x < st_map->x)
+		// 	{
+		// 		printf("map: y[%d],x[%d] is no.|%d|\n", y, x, st_map->map[y][x]);
+		// 		x++;
+		// 	}
+		// 	y++;
+		// }
+		while(buff <= 5)
 		{
-			x = 0;
-			while(x < st_map->x)
-			{
-				// printf("map: y[%d],x[%d] is no.|%d|\n", y, x, st_map->map[y][x]);
-				x++;
-			}
-			y++;
+			printf("x[%d],y[%d],z[%d], vert no.|%d|\n", test_vert[buff].x, test_vert[buff].y, test_vert[buff].z, buff);
+			buff++;
 		}
+
 		fdf_init(&st_mlx, &st_img, st_map);
 	}
 	else

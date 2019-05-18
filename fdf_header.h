@@ -67,7 +67,7 @@ typedef struct	s_mlx
 
 typedef struct	s_app
 {						//buff_quad = 2;
-	t_quad		*quad_buff; //buff[0] == {0,1,3,4} buff[1]
+	t_quad		*quad_buff; //buff[0] == {0,1,3,4} buff[1] == {1,2,4,5}
 	t_vert		*vert_buff; //[0, 1, 2, 3, 4, 5] 6 verts registered
 }				t_app;
 
