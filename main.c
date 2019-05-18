@@ -50,11 +50,11 @@ int main(int argc, char **argv)
 		// 	}
 		// 	y++;
 		// }
-		while(buff <= 5)
-		{
-			printf("x[%d],y[%d],z[%d], vert no.|%d|\n", test_vert[buff].x, test_vert[buff].y, test_vert[buff].z, buff);
-			buff++;
-		}
+		// while(buff <= 5)
+		// {
+		// 	printf("x[%d],y[%d],z[%d], vert no.|%d|\n", test_vert[buff].x, test_vert[buff].y, test_vert[buff].z, buff);
+		// 	buff++;
+		// }
 
 		fdf_init(&st_mlx, &st_img, st_map);
 	}
