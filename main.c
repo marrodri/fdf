@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 		int x;
 		int buff = 0;
 
-		printf("||| or here? |||\n");
+		// printf("||| or here? |||\n");
 		// t_vert *test_vert = st_app->vert_buff;
 
 		x = 0;
@@ -55,7 +55,17 @@ int main(int argc, char **argv)
 		// 	printf("x[%d],y[%d],z[%d], vert no.|%d|\n", test_vert[buff].x, test_vert[buff].y, test_vert[buff].z, buff);
 		// 	buff++;
 		// }
-
+		printf("!!!!!! QUAD_BUFFER !!!!!!\n");
+		int i = 0;
+	while (i < 6)
+	{
+		printf("quad|%d|\n",i);
+		printf("vert|0| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[0].x, st_app->quad_buff[i].quad[0].y, st_app->quad_buff[i].quad[0].z);
+		printf("vert|1| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[1].x, st_app->quad_buff[i].quad[1].y, st_app->quad_buff[i].quad[1].z);
+		printf("vert|2| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[2].x, st_app->quad_buff[i].quad[2].y, st_app->quad_buff[i].quad[2].z);
+		printf("vert|3| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[3].x, st_app->quad_buff[i].quad[3].y, st_app->quad_buff[i].quad[3].z);
+		i++;
+	}
 		fdf_init(&st_mlx, &st_img, st_map);
 	}
 	else

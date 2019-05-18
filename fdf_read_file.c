@@ -39,10 +39,8 @@ void assign_buff(char **str_map, t_map *st_map, t_app *st_app)
 		{
 			if (str_map[z][i] != ' ' && str_map[z][i])
 			{
-				// printf("x is %d\n",x);
 				if(x == 0)
 				{
-					// printf("i is 0\n");
 					st_app->vert_buff[buff].x = (x * 100);
 					st_app->vert_buff[buff].y = ft_atoi(&str_map[z][i]);
 					st_app->vert_buff[buff].z = (z * 100);
@@ -51,9 +49,6 @@ void assign_buff(char **str_map, t_map *st_map, t_app *st_app)
 				}
 				else if (str_map[z][i - 1] == ' ')
 				{
-					// printf("there a space behind before str[%d][%d]\n", y, i);
-					// printf("remaining string |%s|\n", &str_map[y][i]);
-					// printf("atoi is |%d|\n", ft_atoi(&str_map[y][i]));
 					st_app->vert_buff[buff].x = (x * 100);
 					st_app->vert_buff[buff].y = ft_atoi(&str_map[z][i]);
 					st_app->vert_buff[buff].z = (z * 100);
@@ -90,47 +85,18 @@ void assign_buff(char **str_map, t_map *st_map, t_app *st_app)
 		buff++;
 	}
 	i = 0;
-	printf("!!!!!! QUAD_BUFFER !!!!!!\n");
-	while (i < quad_size)
-	{
-		printf("quad|%d|\n",i);
-		printf("vert|0| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[0].x, st_app->quad_buff[i].quad[0].y, st_app->quad_buff[i].quad[0].z);
-		printf("vert|1| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[1].x, st_app->quad_buff[i].quad[1].y, st_app->quad_buff[i].quad[1].z);
-		printf("vert|2| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[2].x, st_app->quad_buff[i].quad[2].y, st_app->quad_buff[i].quad[2].z);
-		printf("vert|3| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[3].x, st_app->quad_buff[i].quad[3].y, st_app->quad_buff[i].quad[3].z);
-		i++;
-	}
-	
-	printf("finished\n");
+	// printf("!!!!!! QUAD_BUFFER !!!!!!\n");
+	// while (i < quad_size)
+	// {
+	// 	printf("quad|%d|\n",i);
+	// 	printf("vert|0| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[0].x, st_app->quad_buff[i].quad[0].y, st_app->quad_buff[i].quad[0].z);
+	// 	printf("vert|1| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[1].x, st_app->quad_buff[i].quad[1].y, st_app->quad_buff[i].quad[1].z);
+	// 	printf("vert|2| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[2].x, st_app->quad_buff[i].quad[2].y, st_app->quad_buff[i].quad[2].z);
+	// 	printf("vert|3| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[3].x, st_app->quad_buff[i].quad[3].y, st_app->quad_buff[i].quad[3].z);
+	// 	i++;
+	// }
+	printf("=== assign buffer exiting ===\n");
 	return ;
-}
-
-int **create_map(int **map, int z, int x)
-{
-	int i;
-
-	i = 0;
-	// printf("x|%d|, y|%d|\n", x, y);
-	if ((map = (int **)malloc((z + 1) * sizeof(int *))) == NULL)
-		return (NULL);
-	// printf("malloc y ready\n");
-	while (i < z)
-	{
-		// printf("allocating %d line\n", i);
-		if ((map[i] = (int *)malloc((x + 1) * sizeof(int))) == NULL)
-			return (NULL);
-		i++;
-	}
-	map[z] = NULL;
-	i = 0;
-	while(map[i])
-	{
-		map[i][x] = (int)NULL;
-		i++;
-	}
-	// printf("map FULLY CREATED y|%d| x|%d|!!!\n", y, x);
-	// printf("--- EXIT MAP CREATOR ---\n");
-	return (map);
 }
 
 int check_valid_file(const int fd, t_map **st_map, t_app **st_app)
@@ -169,13 +135,11 @@ int check_valid_file(const int fd, t_map **st_map, t_app **st_app)
 
 	temp = str_map;
 	str_map = ft_strtrim(str_map);
-	// printf("%s\n",str_map);
 	splt_map = ft_strsplit(str_map, '\n');
-	// (*st_map)->map = create_map((*st_map)->map, (*st_map)->z, (*st_map)->x);
 	assign_buff(splt_map, (*st_map), (*st_app));
 	free(temp);
 	free(str_map);
 	// printf("--- exitng check_valid_file and freeing unecesary file ---\n");
-	printf("+++ here +++\n");
+	printf("finished reading file\n");
 	return (1);
 }
