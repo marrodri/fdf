@@ -12,22 +12,26 @@
 
 #include "fdf_header.h"
 
-t_quad *set_coord()
+t_quad *set_coord(t_quad *st_quad)
 {
 	//TODO move the cordinates to the center
+	return st_quad;
 }
 
-t_quad *iso_view()
+t_quad *iso_view(t_quad *st_quad)
 {
 	//TODO calculate the coords to the perspective view
+	return st_quad;
 }
 
-t_quad *conic_view()
+t_quad *conic_view(t_quad *st_quad)
 {
 	//TODO calculate the coords to the perspective view
+	return st_quad;
 }
 
-t_quad *parallel_view()
+t_quad *parallel_view(t_quad *st_quad)
 {
 	//TODO calculate the coords to the perspective view
+	return st_quad;
 }
