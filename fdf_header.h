@@ -39,7 +39,6 @@ typedef struct	s_map
 {
 	int			x;
 	int			z;
-	// int			**map;
 }				t_map;
 
 typedef struct	s_img

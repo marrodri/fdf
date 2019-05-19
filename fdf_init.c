@@ -43,8 +43,8 @@ void	draw_wireframe_image(t_quad *st_quad, char *addr, int bpp, int i, int buff)
 	else
 		steps = fabs(dz);
 
-	x_inc = dx / (double) steps;
-	z_inc = dz / (double) steps;
+	x_inc = dx / (float) steps;
+	z_inc = dz / (float) steps;
 	x = st_quad[0].quad[0].x;
 	z = st_quad[0].quad[0].z;
 	for (int v = 0; v < steps; v++)
@@ -75,7 +75,7 @@ void	fdf_init(t_ptr **st_ptr, t_img **st_img, t_map *st_map, t_app *st_app)
 	(*st_ptr)->img_ptr = mlx_new_image((*st_ptr)->mlx_ptr, WIN_SZ, WIN_SZ);
 	(*st_img)->addr = mlx_get_data_addr((*st_ptr)->img_ptr, &(*st_img)->bpp, &(*st_img)->sl, &(*st_img)->endian);
 	(*st_img)->bpp /= 8;
-	while (buff < 4)
+	while (buff < 9)
 	{
 		i = 0;
 		while(i < 4)
