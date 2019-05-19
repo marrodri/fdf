@@ -26,7 +26,7 @@ void assign_buff(char **str_map, t_map *st_map, t_app *st_app)
 	buff = 0;
 	size = (st_map->x) * (st_map->z);
 	quad_size = (st_map->x - 1) * (st_map->z - 1);
-	st_app = malloc(sizeof(t_app));
+	
 	printf("size is |%d|\n", size);
 	st_app->vert_buff = malloc((size) * sizeof(t_vert));
 	st_app->quad_buff = malloc((size) * sizeof(t_quad));
@@ -39,15 +39,7 @@ void assign_buff(char **str_map, t_map *st_map, t_app *st_app)
 		{
 			if (str_map[z][i] != ' ' && str_map[z][i])
 			{
-				if(x == 0)
-				{
-					st_app->vert_buff[buff].x = (x * 100);
-					st_app->vert_buff[buff].y = ft_atoi(&str_map[z][i]);
-					st_app->vert_buff[buff].z = (z * 100);
-					x++;
-					buff++;
-				}
-				else if (str_map[z][i - 1] == ' ')
+				if(x == 0 || str_map[z][i - 1] == ' ')
 				{
 					st_app->vert_buff[buff].x = (x * 100);
 					st_app->vert_buff[buff].y = ft_atoi(&str_map[z][i]);
@@ -85,16 +77,16 @@ void assign_buff(char **str_map, t_map *st_map, t_app *st_app)
 		buff++;
 	}
 	i = 0;
-	// printf("!!!!!! QUAD_BUFFER !!!!!!\n");
-	// while (i < quad_size)
-	// {
-	// 	printf("quad|%d|\n",i);
-	// 	printf("vert|0| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[0].x, st_app->quad_buff[i].quad[0].y, st_app->quad_buff[i].quad[0].z);
-	// 	printf("vert|1| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[1].x, st_app->quad_buff[i].quad[1].y, st_app->quad_buff[i].quad[1].z);
-	// 	printf("vert|2| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[2].x, st_app->quad_buff[i].quad[2].y, st_app->quad_buff[i].quad[2].z);
-	// 	printf("vert|3| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[3].x, st_app->quad_buff[i].quad[3].y, st_app->quad_buff[i].quad[3].z);
-	// 	i++;
-	// }
+	printf("!!!!!! QUAD_BUFFER !!!!!!\n");
+	while (i < quad_size)
+	{
+		printf("quad|%d|\n",i);
+		printf("vert|0| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[0].x, st_app->quad_buff[i].quad[0].y, st_app->quad_buff[i].quad[0].z);
+		printf("vert|1| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[1].x, st_app->quad_buff[i].quad[1].y, st_app->quad_buff[i].quad[1].z);
+		printf("vert|2| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[2].x, st_app->quad_buff[i].quad[2].y, st_app->quad_buff[i].quad[2].z);
+		printf("vert|3| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[3].x, st_app->quad_buff[i].quad[3].y, st_app->quad_buff[i].quad[3].z);
+		i++;
+	}
 	printf("=== assign buffer exiting ===\n");
 	return ;
 }
@@ -109,7 +101,8 @@ int check_valid_file(const int fd, t_map **st_map, t_app **st_app)
 
 	if ((*st_map = malloc(sizeof(t_map))) == NULL)
 		return (0);
-
+	if((*st_app = malloc(sizeof(t_app))) == NULL)
+		return (0);
 	count = 0;
 	(*st_map)->x = 0;
 	(*st_map)->z = 0;
@@ -136,10 +129,12 @@ int check_valid_file(const int fd, t_map **st_map, t_app **st_app)
 	temp = str_map;
 	str_map = ft_strtrim(str_map);
 	splt_map = ft_strsplit(str_map, '\n');
-	assign_buff(splt_map, (*st_map), (*st_app));
+	(*st_app)->vert_buff = setvert_buff(splt_map, *st_map, (*st_app)->vert_buff);
+	(*st_app)->quad_buff = setquad_buff((*st_app)->vert_buff, *st_map, (*st_app)->quad_buff);
+	// assign_buff(splt_map, (*st_map), (*st_app));
 	free(temp);
 	free(str_map);
-	// printf("--- exitng check_valid_file and freeing unecesary file ---\n");
+
 	printf("finished reading file\n");
 	return (1);
 }

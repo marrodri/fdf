@@ -57,7 +57,8 @@ int main(int argc, char **argv)
 		// }
 		printf("!!!!!! QUAD_BUFFER !!!!!!\n");
 		int i = 0;
-	while (i < 6)
+		int size =  (st_map->x - 1) * (st_map->z - 1);
+	while (i < size)
 	{
 		printf("quad|%d|\n",i);
 		printf("vert|0| x|%d| y|%d| z|%d|\n", st_app->quad_buff[i].quad[0].x, st_app->quad_buff[i].quad[0].y, st_app->quad_buff[i].quad[0].z);

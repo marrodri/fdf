@@ -75,5 +75,8 @@ void			window_init(t_mlx **st_mlx);
 int				check_valid_file(const int fd, t_map **st_map, t_app **st_app);
 int				**create_map(int **map, int y, int x);
 
+t_vert			*setvert_buff(char **str_map, t_map *st_map, t_vert *st_vert);
+t_quad			*setquad_buff(t_vert *st_vert, t_map *st_map, t_quad *st_quad);
+
 void	fdf_init(t_mlx **st_mlx, t_img **st_img, t_map *st_map);
 #endif
