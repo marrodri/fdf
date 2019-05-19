@@ -15,6 +15,7 @@
 # define COLOR 0xFFFFFF
 # define X_PIX 1000
 # define Y_PIX 1000
+# define WIN_SZ 500
 # include <math.h>
 # include <fcntl.h>
 # include "./includes/libft/libft.h"
@@ -22,20 +23,11 @@
 
 #include <stdio.h>
 
-// typedef struct	s_line
-// {
-// 	int			x1;
-// 	int			y1;
-// 	int			x2;
-// 	int			y2;
-// }				t_line;
-
-
 typedef struct s_vert
 {
-	int x;
-	int y;
-	int z;
+	double x;
+	double y;
+	double z;
 }				t_vert;
 
 typedef struct	s_quad
@@ -58,25 +50,25 @@ typedef struct	s_img
 	int			sl;
 }				t_img;
 
-typedef struct	s_mlx
+typedef struct	s_ptr
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
 	void		*img_ptr;
-}				t_mlx;
+}				t_ptr;
 
 typedef struct	s_app
-{						//buff_quad = 2;
-	t_quad		*quad_buff; //buff[0] == {0,1,3,4} buff[1] == {1,2,4,5}
-	t_vert		*vert_buff; //[0, 1, 2, 3, 4, 5] 6 verts registered
+{
+	t_quad		*quad_buff;
+	t_vert		*vert_buff;
 }				t_app;
 
-void			window_init(t_mlx **st_mlx);
+void			window_init(t_ptr **st_ptr);
 int				check_valid_file(const int fd, t_map **st_map, t_app **st_app);
 int				**create_map(int **map, int y, int x);
 
 t_vert			*setvert_buff(char **str_map, t_map *st_map, t_vert *st_vert);
 t_quad			*setquad_buff(t_vert *st_vert, t_map *st_map, t_quad *st_quad);
 
-void	fdf_init(t_mlx **st_mlx, t_img **st_img, t_map *st_map);
+void			fdf_init(t_ptr **st_ptr, t_img **st_img, t_map *st_map, t_app *st_app);
 #endif
