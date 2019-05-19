@@ -28,6 +28,7 @@ int		mlx_pixel_image(int x, int y, char *addr, int bpp)
 
 void	draw_wireframe_image(t_quad *st_quad, char *addr, int bpp)
 {
+	
 	return ;
 }
 
