@@ -85,7 +85,7 @@ void	fdf_init(t_ptr **st_ptr, t_img **st_img, t_map *st_map, t_app *st_app)
 	(*st_ptr)->img_ptr = mlx_new_image((*st_ptr)->mlx_ptr, WIN_SZ, WIN_SZ);
 	(*st_img)->addr = mlx_get_data_addr((*st_ptr)->img_ptr, &(*st_img)->bpp, &(*st_img)->sl, &(*st_img)->endian);
 	(*st_img)->bpp /= 8;
-	while (buff < 3)
+	while (buff < ((st_map->x - 1) * (st_map->z - 1)))
 	{
 		i = 0;
 		while(i < 4)
