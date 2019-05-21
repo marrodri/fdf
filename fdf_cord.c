@@ -12,9 +12,9 @@
 
 #include "fdf_header.h"
 
-t_quad *set_coord(t_map *st_map, t_quad *st_quad)
+t_quad *norm_vect(t_map *st_map, t_quad *st_quad)
 {
-	//TODO move the cordinates to the center
+	//TODO if vector is neg or beyond the size of the window normalize
 	int buff;
 	int i;
 
@@ -32,8 +32,7 @@ t_quad *set_coord(t_map *st_map, t_quad *st_quad)
 		}
 		buff++;
 	}
-	return st_quad;
-	return st_quad;
+	return (st_quad);
 }
 
 static void iso(int *x, int y, int *z)
@@ -43,13 +42,12 @@ static void iso(int *x, int y, int *z)
 
 	prev_x = *x;
 	prev_z = *z;
-	*x = (prev_x + prev_z) *cos(0.523599);
-	*z = -y + (prev_x - prev_z) * sin(0.523599);
+	*x = (prev_x - prev_z) *cos(0.523599);
+	*z = -y + (prev_x + prev_z) * sin(0.523599);
 }
 
 t_quad *iso_view(t_map *st_map ,t_quad *st_quad)
 {
-	//TODO calculate the coords to the perspective view
 	int buff;
 	int i;
 	int x;
@@ -72,17 +70,11 @@ t_quad *iso_view(t_map *st_map ,t_quad *st_quad)
 		}
 		buff++;
 	}
-	return st_quad;
-}
-
-t_quad *conic_view(t_quad *st_quad)
-{
-	//TODO calculate the coords to the perspective view
-	return st_quad;
+	return (st_quad);
 }
 
 t_quad *parallel_view(t_quad *st_quad)
 {
-	//TODO calculate the coords to the perspective view
+	//TODO calculate the coords to the parallel view
 	return st_quad;
 }
