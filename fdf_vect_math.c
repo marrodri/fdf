@@ -12,27 +12,30 @@
 
 #include "fdf_header.h"
 
-t_quad *transl_vect(t_map *st_map, t_quad *st_quad)
+t_vert *transl_vert(t_map *st_map, t_vert *st_vert)
 {
 	//TODO if vector is neg to move to screen arean
 	int buff;
-	int i;
+	// int i;
 
-	i = 0;
+	// i = 0;
 	buff = 0;
-	while (buff < ((st_map->x - 1) * (st_map->z - 1)))
+	while (buff < ((st_map->x) * (st_map->z)))
 	{
-		i = 0;
-		while (i < 4)
-		{
-			st_quad[buff].quad_vert[i].x = st_quad[buff].quad_vert[i].x + 100;
-			st_quad[buff].quad_vert[i].y = st_quad[buff].quad_vert[i].y + 100;
-			st_quad[buff].quad_vert[i].z = st_quad[buff].quad_vert[i].z + 100;
-			i++;
-		}
+		// i = 0;
+		// while (i < 4)
+		// {
+			st_vert[buff].x = st_vert[buff].x + 100;
+			st_vert[buff].y = st_vert[buff].y + 100;
+			st_vert[buff].z = st_vert[buff].z + 100;
+			// st_quad[buff].quad_vert[i].x = st_quad[buff].quad_vert[i].x + 100;
+			// st_quad[buff].quad_vert[i].y = st_quad[buff].quad_vert[i].y + 100;
+			// st_quad[buff].quad_vert[i].z = st_quad[buff].quad_vert[i].z + 100;
+			// i++;
+		// }
 		buff++;
 	}
-	return (st_quad);
+	return (st_vert);
 }
 
 t_quad *scale_vect(t_map *st_map, t_quad *st_quad)

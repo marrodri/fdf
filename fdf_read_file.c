@@ -54,7 +54,7 @@ int	check_valid_file(const int fd, t_map **st_map, t_app **st_app)
 	str_map = ft_strtrim(str_map);
 	splt_map = ft_strsplit(str_map, '\n');
 	(*st_app)->vert_buff = setvert_buff(splt_map, *st_map, (*st_app)->vert_buff);
-	(*st_app)->quad_buff = setquad_buff((*st_app)->vert_buff, *st_map, (*st_app)->quad_buff);
+	// (*st_app)->quad_buff = setquad_buff((*st_app)->vert_buff, *st_map, (*st_app)->quad_buff);
 	free(temp);
 	free(str_map);
 	return (1);

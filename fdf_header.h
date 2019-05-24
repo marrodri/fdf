@@ -77,8 +77,8 @@ typedef struct	s_app
 void			window_init(t_ptr **st_ptr);
 int				check_valid_file(const int fd, t_map **st_map, t_app **st_app);
 int				**create_map(int **map, int y, int x);
-t_quad			*iso_view(t_map *st_map ,t_quad *st_quad);
-t_quad			*transl_vect(t_map *st_map, t_quad *st_quad);
+t_vert 			*iso_view(t_map *st_map ,t_vert *st_vert);
+t_vert			*transl_vert(t_map *st_map, t_vert *st_vert);
 
 t_vert			*setvert_buff(char **str_map, t_map *st_map, t_vert *st_vert);
 t_quad			*setquad_buff(t_vert *st_vert, t_map *st_map, t_quad *st_quad);
