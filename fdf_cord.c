@@ -12,7 +12,7 @@
 
 #include "fdf_header.h"
 
-t_quad *norm_vect(t_map *st_map, t_quad *st_quad)
+t_quad *transl_vect(t_map *st_map, t_quad *st_quad)
 {
 	//TODO if vector is neg or beyond the size of the window normalize
 	int buff;
@@ -25,9 +25,9 @@ t_quad *norm_vect(t_map *st_map, t_quad *st_quad)
 		i = 0;
 		while(i < 4)
 		{
-			st_quad[buff].quad[i].x = st_quad[buff].quad[i].x + 50;
-			st_quad[buff].quad[i].y = st_quad[buff].quad[i].y + 50;
-			st_quad[buff].quad[i].z = st_quad[buff].quad[i].z + 50;
+			st_quad[buff].quad_vert[i].x = st_quad[buff].quad_vert[i].x + 100;
+			st_quad[buff].quad_vert[i].y = st_quad[buff].quad_vert[i].y + 100;
+			st_quad[buff].quad_vert[i].z = st_quad[buff].quad_vert[i].z + 100;
 			i++;
 		}
 		buff++;
@@ -61,11 +61,11 @@ t_quad *iso_view(t_map *st_map ,t_quad *st_quad)
 		i = 0;
 		while(i < 4)
 		{
-			x = (st_quad[buff].quad[i].x);
-			z = (st_quad[buff].quad[i].z);
-			iso(&x, st_quad[buff].quad[i].y, &z);
-			(st_quad[buff].quad[i].z) = z;
-			(st_quad[buff].quad[i].x) = x;
+			x = (st_quad[buff].quad_vert[i].x);
+			z = (st_quad[buff].quad_vert[i].z);
+			iso(&x, st_quad[buff].quad_vert[i].y, &z);
+			(st_quad[buff].quad_vert[i].z) = z;
+			(st_quad[buff].quad_vert[i].x) = x;
 			i++;
 		}
 		buff++;

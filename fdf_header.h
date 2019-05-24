@@ -21,22 +21,29 @@
 
 #include <stdio.h>
 
+typedef struct	s_win
+{
+	int			x_win_sz;
+	int			y_win_sz;
+}				t_win;
+
+typedef struct	s_transl
+{
+	double 		x;
+	double		z;
+}				t_transl;
+
 typedef struct	s_vert
 {
-	double x;
-	double y;
-	double z;
-	double color;
+	double		x;
+	double		y;
+	double		z;
+	double		color;
 }				t_vert;
-
-// typedef struct	s_matrix
-// {
-// 	double matrix_rot[2][2];
-// }				t_matrix;
 
 typedef struct	s_quad
 {
-	t_vert		quad[4]; 
+	t_vert		quad_vert[4]; 
 }				t_quad;
 
 typedef struct	s_map
@@ -70,7 +77,7 @@ void			window_init(t_ptr **st_ptr);
 int				check_valid_file(const int fd, t_map **st_map, t_app **st_app);
 int				**create_map(int **map, int y, int x);
 t_quad			*iso_view(t_map *st_map ,t_quad *st_quad);
-t_quad			*norm_vect(t_map *st_map, t_quad *st_quad);
+t_quad			*transl_vect(t_map *st_map, t_quad *st_quad);
 
 t_vert			*setvert_buff(char **str_map, t_map *st_map, t_vert *st_vert);
 t_quad			*setquad_buff(t_vert *st_vert, t_map *st_map, t_quad *st_quad);

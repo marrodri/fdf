@@ -57,16 +57,16 @@ int main(int argc, char **argv)
 		// }
 		printf("!!!!!! QUAD_BUFFER !!!!!!\n");
 		st_app->quad_buff = iso_view(st_map, st_app->quad_buff);
-		st_app->quad_buff = norm_vect(st_map, st_app->quad_buff);
+		st_app->quad_buff = transl_vect(st_map, st_app->quad_buff);
 		int i = 0;
 		int size =  (st_map->x - 1) * (st_map->z - 1);
 	while (i < size)
 	{
 		printf("quad|%d|\n",i);
-		printf("vert|0| x|%f| z|%f| y|%f|\n", st_app->quad_buff[i].quad[0].x, st_app->quad_buff[i].quad[0].z, st_app->quad_buff[i].quad[0].y);
-		printf("vert|1| x|%f| z|%f| y|%f|\n", st_app->quad_buff[i].quad[1].x, st_app->quad_buff[i].quad[1].z, st_app->quad_buff[i].quad[1].y);
-		printf("vert|2| x|%f| z|%f| y|%f|\n", st_app->quad_buff[i].quad[2].x, st_app->quad_buff[i].quad[2].z, st_app->quad_buff[i].quad[2].y);
-		printf("vert|3| x|%f| z|%f| y|%f|\n", st_app->quad_buff[i].quad[3].x, st_app->quad_buff[i].quad[3].z, st_app->quad_buff[i].quad[3].y);
+		printf("vert|0| x|%f| z|%f| y|%f|\n", st_app->quad_buff[i].quad_vert[0].x, st_app->quad_buff[i].quad_vert[0].z, st_app->quad_buff[i].quad_vert[0].y);
+		printf("vert|1| x|%f| z|%f| y|%f|\n", st_app->quad_buff[i].quad_vert[1].x, st_app->quad_buff[i].quad_vert[1].z, st_app->quad_buff[i].quad_vert[1].y);
+		printf("vert|2| x|%f| z|%f| y|%f|\n", st_app->quad_buff[i].quad_vert[2].x, st_app->quad_buff[i].quad_vert[2].z, st_app->quad_buff[i].quad_vert[2].y);
+		printf("vert|3| x|%f| z|%f| y|%f|\n", st_app->quad_buff[i].quad_vert[3].x, st_app->quad_buff[i].quad_vert[3].z, st_app->quad_buff[i].quad_vert[3].y);
 		i++;
 	}
 		fdf_init(&st_ptr, &st_img, st_map, st_app);

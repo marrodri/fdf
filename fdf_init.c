@@ -26,7 +26,7 @@ int		mlx_pixel_image(int x, int z, char *addr, int bpp)
 	return (1);
 }
 
-void	draw_wireframe_image(t_quad *st_quad, t_img *st_img, int buff, int i)
+void	draw_wireframe_image(double x0, double x1, double z0, double z1, t_img *st_img)
 {
 	double dx;
 	double dz;
@@ -35,29 +35,17 @@ void	draw_wireframe_image(t_quad *st_quad, t_img *st_img, int buff, int i)
 	double z_inc;
 	double x;
 	double z;
-
-	int j;
-
-		if(i == 3)
-	{
-		j = 0;
-	}
-	else
-	{
-		j = i + 1;
-	}
 	
-	dx = st_quad[buff].quad[j].x - st_quad[buff].quad[i].x;
-	dz = st_quad[buff].quad[j].z - st_quad[buff].quad[i].z;
+	dx = x1 - x0; //vx1 - vx0;
+	dz = z1 - z0; //vz1 - vz0;
 	if (fabs(dx) > fabs(dz))
 		steps = fabs(dx);
 	else
 		steps = fabs(dz);
-
 	x_inc = dx / (float) steps;
 	z_inc = dz / (float) steps;
-	x = st_quad[buff].quad[i].x;
-	z = st_quad[buff].quad[i].z;
+	x = x0; //vx0;
+	z = z0; //vy0;
 	for (int v = 0; v < steps; v++)
 	{
 		x += x_inc;
@@ -71,6 +59,7 @@ void	fdf_init(t_ptr **st_ptr, t_img **st_img, t_map *st_map, t_app *st_app)
 {
 	int i;
 	int buff;
+	t_vert *verts;
 
 	buff = 0;
 	i = 0;
@@ -87,12 +76,11 @@ void	fdf_init(t_ptr **st_ptr, t_img **st_img, t_map *st_map, t_app *st_app)
 	(*st_img)->bpp /= 8;
 	while (buff < ((st_map->x - 1) * (st_map->z - 1)))
 	{
-		i = 0;
-		while(i < 4)
-		{
-			draw_wireframe_image(st_app->quad_buff, *st_img, buff, i);
-			i++;
-		}
+		verts = st_app->quad_buff[buff].quad_vert;
+			draw_wireframe_image(verts[0].x, verts[1].x, verts[0].z, verts[1].z, *st_img);
+			draw_wireframe_image(verts[2].x, verts[3].x, verts[2].z, verts[3].z, *st_img);
+			draw_wireframe_image(verts[0].x, verts[2].x, verts[0].z, verts[2].z, *st_img);
+			draw_wireframe_image(verts[1].x, verts[3].x, verts[1].z, verts[3].z, *st_img);
 		buff++;
 	}
 	mlx_put_image_to_window((*st_ptr)->mlx_ptr, (*st_ptr)->win_ptr, (*st_ptr)->img_ptr, 0, 0);
