@@ -26,7 +26,7 @@ int		mlx_pixel_image(int x, int z, char *addr, int bpp)
 	return (1);
 }
 
-void	draw_wireframe_image(t_quad *st_quad, char *addr, int bpp, int i, int buff)
+void	draw_wireframe_image(t_quad *st_quad, t_img *st_img, int buff, int i)
 {
 	double dx;
 	double dz;
@@ -38,7 +38,7 @@ void	draw_wireframe_image(t_quad *st_quad, char *addr, int bpp, int i, int buff)
 
 	int j;
 
-	if(i == 3)
+		if(i == 3)
 	{
 		j = 0;
 	}
@@ -62,7 +62,7 @@ void	draw_wireframe_image(t_quad *st_quad, char *addr, int bpp, int i, int buff)
 	{
 		x += x_inc;
 		z += z_inc;
-		mlx_pixel_image(x, z, addr, bpp);
+		mlx_pixel_image(x, z, st_img->addr, st_img->bpp);
 	}
 	return ;
 }
@@ -90,7 +90,7 @@ void	fdf_init(t_ptr **st_ptr, t_img **st_img, t_map *st_map, t_app *st_app)
 		i = 0;
 		while(i < 4)
 		{
-			draw_wireframe_image(st_app->quad_buff, (*st_img)->addr, (*st_img)->bpp, i, buff);
+			draw_wireframe_image(st_app->quad_buff, *st_img, buff, i);
 			i++;
 		}
 		buff++;

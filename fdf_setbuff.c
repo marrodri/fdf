@@ -65,8 +65,8 @@ t_quad	*setquad_buff(t_vert *st_vert, t_map *st_map, t_quad *st_quad)
 	{
 		st_quad[buff].quad[0] = st_vert[i];
 		st_quad[buff].quad[1] = st_vert[i + 1];
-		st_quad[buff].quad[2] = st_vert[i + st_map->x + 1];
-		st_quad[buff].quad[3] = st_vert[i + st_map->x];
+		st_quad[buff].quad[2] = st_vert[i + st_map->x];
+		st_quad[buff].quad[3] = st_vert[i + st_map->x + 1];
 		if ((i + 1) == (st_map->x - 1))
 		{
 			i++;
