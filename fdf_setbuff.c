@@ -57,11 +57,9 @@ t_quad	*setquad_buff(t_vert *st_vert, t_map *st_map, t_quad *st_quad)
 	int i;
 	int vert_len;
 	int quad_len;
-	int tmp;
 
 	buff = 0;
 	vert_len = st_map->x;
-	tmp = vert_len;
 	quad_len = (st_map->x - 1) * (st_map->z - 1);
 	st_quad = malloc(quad_len * sizeof(t_quad));
 	i = 0;
@@ -75,7 +73,7 @@ t_quad	*setquad_buff(t_vert *st_vert, t_map *st_map, t_quad *st_quad)
 		if ((i + 1) == (vert_len - 1))
 		{
 			printf("+++pass because i|%d| == x|%d|+++\n", i + 1, vert_len - 1);
-			vert_len = tmp + vert_len;
+			vert_len = st_map->x + vert_len;
 			i++;
 		}
 		i++;
