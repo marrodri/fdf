@@ -13,7 +13,7 @@
 #ifndef FDF_HEADER_H
 # define FDF_HEADER_H
 # define COLOR 0xFFFFFF
-# define WIN_SZ 500
+# define WIN_SZ 1000
 # include <math.h>
 # include <fcntl.h>
 # include "./includes/libft/libft.h"
@@ -27,18 +27,19 @@ typedef struct	s_win
 	int			y_win_sz;
 }				t_win;
 
-typedef struct	s_transl
+typedef struct	s_vec_math
 {
-	double 		x;
-	double		z;
-}				t_transl;
+	double 		neg_x;
+	double		neg_z;
+	double		scale_x;
+	double		scale_y;
+}				t_vec_math;
 
 typedef struct	s_vert
 {
 	double		x;
 	double		y;
 	double		z;
-	double		color;
 }				t_vert;
 
 typedef struct	s_quad
