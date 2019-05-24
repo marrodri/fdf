@@ -25,9 +25,9 @@ t_quad *norm_vect(t_map *st_map, t_quad *st_quad)
 		i = 0;
 		while(i < 4)
 		{
-			(st_quad[buff].quad[i].x) = (st_quad[buff].quad[i].x) + 50;
-			(st_quad[buff].quad[i].y) = (st_quad[buff].quad[i].y + 50);
-			(st_quad[buff].quad[i].z) = (st_quad[buff].quad[i].z) + 50;
+			st_quad[buff].quad[i].x = st_quad[buff].quad[i].x + 50;
+			st_quad[buff].quad[i].y = st_quad[buff].quad[i].y + 50;
+			st_quad[buff].quad[i].z = st_quad[buff].quad[i].z + 50;
 			i++;
 		}
 		buff++;

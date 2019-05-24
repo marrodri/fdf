@@ -38,7 +38,7 @@ t_vert	*setvert_buff(char **str_map, t_map *st_map, t_vert *st_vert)
 				if (x == 0 || str_map[z][i - 1] == ' ')
 				{
 					st_vert[buff].x = (x * 25);
-					st_vert[buff].y = ft_atoi(&str_map[z][i]);
+					st_vert[buff].y = 25 * ft_atoi(&str_map[z][i]);
 					st_vert[buff].z = (z * 25);
 					x++;
 					buff++;

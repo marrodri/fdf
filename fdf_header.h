@@ -13,8 +13,6 @@
 #ifndef FDF_HEADER_H
 # define FDF_HEADER_H
 # define COLOR 0xFFFFFF
-# define X_PIX 1000
-# define Y_PIX 1000
 # define WIN_SZ 500
 # include <math.h>
 # include <fcntl.h>
@@ -23,12 +21,18 @@
 
 #include <stdio.h>
 
-typedef struct s_vert
+typedef struct	s_vert
 {
 	double x;
 	double y;
 	double z;
+	double color;
 }				t_vert;
+
+// typedef struct	s_matrix
+// {
+// 	double matrix_rot[2][2];
+// }				t_matrix;
 
 typedef struct	s_quad
 {

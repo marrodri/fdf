@@ -57,7 +57,7 @@ int main(int argc, char **argv)
 		// }
 		printf("!!!!!! QUAD_BUFFER !!!!!!\n");
 		st_app->quad_buff = iso_view(st_map, st_app->quad_buff);
-		st_app->quad_buff = set_coord(st_map, st_app->quad_buff);
+		st_app->quad_buff = norm_vect(st_map, st_app->quad_buff);
 		int i = 0;
 		int size =  (st_map->x - 1) * (st_map->z - 1);
 	while (i < size)
