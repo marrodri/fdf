@@ -23,16 +23,16 @@ t_vert *transl_vert(t_app *st_app, t_map *st_map)
 	dif_z = 0;
 	while (buff < ((st_map->x) * (st_map->z)))
 	{
-		if(st_app->vert_buff[buff].x < dif_x)
+		if (st_app->vert_buff[buff].x < dif_x)
 			dif_x = st_app->vert_buff[buff].x;
-		if((st_app->vert_buff[buff].z < dif_z))
+		if (st_app->vert_buff[buff].z < dif_z)
 			dif_z = st_app->vert_buff[buff].z;
 		buff++;
 	}
 	buff = 0;
 	dif_x = fabs(dif_x) + 5;
 	dif_z = fabs(dif_z) + 5;
-	while(buff < ((st_map->x) * (st_map->z)))
+	while (buff < ((st_map->x) * (st_map->z)))
 	{
 		st_app->vert_buff[buff].z = st_app->vert_buff[buff].z + dif_z;
 		st_app->vert_buff[buff].x = st_app->vert_buff[buff].x + dif_x;
@@ -52,14 +52,38 @@ t_vert *scale_vect(t_app *st_app, t_map *st_map)
 	dif_z = 0;
 	while (buff < ((st_map->x) * (st_map->z)))
 	{
-		if (st_app->vert_buff[buff].x > st_app->x_win_sz)
+		if (st_app->vert_buff[buff].x > WIN_SZ)
 		{
-			dif_x = st_app->vert_buff[buff].x;
+			if(dif_x < st_app->vert_buff[buff].x)
+				dif_x = st_app->vert_buff[buff].x;
 		}
-		if (st_app->vert_buff[buff].z > st_app->y_win_sz)
+		if (st_app->vert_buff[buff].z > WIN_SZ)
 		{
-			dif_z = st_app->vert_buff[buff].z;
+			if(dif_z < st_app->vert_buff[buff].z)
+				dif_z = st_app->vert_buff[buff].z;
+		}
+		buff++;
+	}
+	if (dif_x > 0)
+	{
+		buff = 0;
+		dif_x = dif_z/st_app->x_win_sz;
+		while(buff < ((st_map->x) * (st_map->z)))
+		{
+			st_app->vert_buff[buff].x = st_app->vert_buff[buff].x * dif_x;
+			buff++;
 		}
 	}
-	buff = 0;
+	if (dif_z > 0)
+	{
+		buff = 0;
+		dif_z = dif_z/st_app->y_win_sz;
+		while(buff < ((st_map->x) * (st_map->z)))
+		{
+			st_app->vert_buff[buff].z = st_app->vert_buff[buff].z * dif_z;
+			buff++;
+		}
+	}
+
+	return (st_app->vert_buff);
 }

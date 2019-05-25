@@ -27,14 +27,6 @@ typedef struct	s_win
 	int			y_win_sz;
 }				t_win;
 
-// typedef struct	s_vec_math
-// {
-// 	double 		neg_x;
-// 	double		neg_z;
-// 	double		scale_x;
-// 	double		scale_y;
-// }				t_vec_math;
-
 typedef struct	s_vert
 {
 	double		x;
@@ -44,7 +36,7 @@ typedef struct	s_vert
 
 typedef struct	s_quad
 {
-	t_vert		quad_vert[4]; 
+	t_vert		quad_vert[4];
 }				t_quad;
 
 typedef struct	s_map
@@ -83,7 +75,8 @@ t_vert 			*iso_view(t_map *st_map ,t_vert *st_vert);
 t_vert			*transl_vert(t_app *st_app, t_map *st_map);
 
 t_vert			*setvert_buff(char **str_map, t_map *st_map, t_vert *st_vert);
-t_quad			*setquad_buff(t_vert *st_vert, t_map *st_map, t_quad *st_quad);
+t_vert			*scale_vect(t_app *st_app, t_map *st_map);
 
+t_quad			*setquad_buff(t_vert *st_vert, t_map *st_map, t_quad *st_quad);
 void			fdf_init(t_ptr **st_ptr, t_img **st_img, t_map *st_map, t_app *st_app);
 #endif

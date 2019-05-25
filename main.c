@@ -58,6 +58,7 @@ int main(int argc, char **argv)
 		printf("!!!!!! QUAD_BUFFER !!!!!!\n");
 		st_app->vert_buff = iso_view(st_map, st_app->vert_buff);
 		st_app->vert_buff = transl_vert(st_app, st_map);
+		st_app->vert_buff = scale_vect(st_app, st_map);
 		st_app->quad_buff = setquad_buff(st_app->vert_buff, st_map, st_app->quad_buff);
 		int i = 0;
 		int size =  (st_map->x - 1) * (st_map->z - 1);
