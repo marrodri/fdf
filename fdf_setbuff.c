@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fdf_header.h"
-#include <stdio.h>
 
 t_vert	*setvert_buff(char **str_map, t_map *st_map, t_vert *st_vert)
 {
@@ -65,14 +64,14 @@ t_quad	*setquad_buff(t_vert *st_vert, t_map *st_map, t_quad *st_quad)
 	i = 0;
 	while (buff < quad_len)
 	{
-		printf("quad buff|%d|\n", buff);
+		// printf("quad buff|%d|\n", buff);
 		st_quad[buff].quad_vert[0] = st_vert[i];
 		st_quad[buff].quad_vert[1] = st_vert[i + 1];
 		st_quad[buff].quad_vert[2] = st_vert[i + st_map->x];
 		st_quad[buff].quad_vert[3] = st_vert[i + st_map->x + 1];
 		if ((i + 1) == (vert_len - 1))
 		{
-			printf("+++pass because i|%d| == x|%d|+++\n", i + 1, vert_len - 1);
+			// printf("+++pass because i|%d| == x|%d|+++\n", i + 1, vert_len - 1);
 			vert_len = st_map->x + vert_len;
 			i++;
 		}

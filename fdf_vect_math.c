@@ -14,7 +14,6 @@
 
 t_vert *transl_vert(t_app *st_app, t_map *st_map)
 {
-	//TODO if vector is neg to move to screen arean
 	int buff;
 	double dif_x;
 	double dif_z;
@@ -25,16 +24,9 @@ t_vert *transl_vert(t_app *st_app, t_map *st_map)
 	while (buff < ((st_map->x) * (st_map->z)))
 	{
 		if(st_app->vert_buff[buff].x < dif_x)
-		{
 			dif_x = st_app->vert_buff[buff].x;
-		}
 		if((st_app->vert_buff[buff].z < dif_z))
-		{
 			dif_z = st_app->vert_buff[buff].z;
-		}
-			// st_app->vert_buff[buff].x = st_app->vert_buff[buff].x + 300;
-			// st_app->vert_buff[buff].y = st_app->vert_buff[buff].y + 300;
-			// st_app->vert_buff[buff].z = st_app->vert_buff[buff].z + 300;
 		buff++;
 	}
 	buff = 0;
