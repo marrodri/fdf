@@ -57,13 +57,13 @@ int main(int argc, char **argv)
 		// }
 		printf("!!!!!! QUAD_BUFFER !!!!!!\n");
 		st_app->vert_buff = iso_view(st_map, st_app->vert_buff);
-		st_app->vert_buff = transl_vert(st_map, st_app->vert_buff);
+		st_app->vert_buff = transl_vert(st_app, st_map);
 		st_app->quad_buff = setquad_buff(st_app->vert_buff, st_map, st_app->quad_buff);
 		int i = 0;
 		int size =  (st_map->x - 1) * (st_map->z - 1);
 	while (i < size)
 	{
-		printf("quad|%d|\n",i);
+		printf("quad|%d|\n", i);
 		printf("vert|0| x|%f| z|%f| y|%f|\n", st_app->quad_buff[i].quad_vert[0].x, st_app->quad_buff[i].quad_vert[0].z, st_app->quad_buff[i].quad_vert[0].y);
 		printf("vert|1| x|%f| z|%f| y|%f|\n", st_app->quad_buff[i].quad_vert[1].x, st_app->quad_buff[i].quad_vert[1].z, st_app->quad_buff[i].quad_vert[1].y);
 		printf("vert|2| x|%f| z|%f| y|%f|\n", st_app->quad_buff[i].quad_vert[2].x, st_app->quad_buff[i].quad_vert[2].z, st_app->quad_buff[i].quad_vert[2].y);

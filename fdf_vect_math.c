@@ -12,30 +12,41 @@
 
 #include "fdf_header.h"
 
-t_vert *transl_vert(t_map *st_map, t_vert *st_vert)
+t_vert *transl_vert(t_app *st_app, t_map *st_map)
 {
 	//TODO if vector is neg to move to screen arean
 	int buff;
-	// int i;
+	double dif_x;
+	double dif_z;
 
-	// i = 0;
 	buff = 0;
+	dif_x = 0;
+	dif_z = 0;
 	while (buff < ((st_map->x) * (st_map->z)))
 	{
-		// i = 0;
-		// while (i < 4)
-		// {
-			st_vert[buff].x = st_vert[buff].x + 100;
-			st_vert[buff].y = st_vert[buff].y + 100;
-			st_vert[buff].z = st_vert[buff].z + 100;
-			// st_quad[buff].quad_vert[i].x = st_quad[buff].quad_vert[i].x + 100;
-			// st_quad[buff].quad_vert[i].y = st_quad[buff].quad_vert[i].y + 100;
-			// st_quad[buff].quad_vert[i].z = st_quad[buff].quad_vert[i].z + 100;
-			// i++;
-		// }
+		if(st_app->vert_buff[buff].x < dif_x)
+		{
+			dif_x = st_app->vert_buff[buff].x;
+		}
+		if((st_app->vert_buff[buff].z < dif_z))
+		{
+			dif_z = st_app->vert_buff[buff].z;
+		}
+			// st_app->vert_buff[buff].x = st_app->vert_buff[buff].x + 300;
+			// st_app->vert_buff[buff].y = st_app->vert_buff[buff].y + 300;
+			// st_app->vert_buff[buff].z = st_app->vert_buff[buff].z + 300;
 		buff++;
 	}
-	return (st_vert);
+	buff = 0;
+	dif_x = fabs(dif_x) + 5;
+	dif_z = fabs(dif_z) + 5;
+	while(buff < ((st_map->x) * (st_map->z)))
+	{
+		st_app->vert_buff[buff].z = st_app->vert_buff[buff].z + dif_z;
+		st_app->vert_buff[buff].x = st_app->vert_buff[buff].x + dif_x;
+		buff++;
+	}
+	return (st_app->vert_buff);
 }
 
 t_quad *scale_vect(t_map *st_map, t_quad *st_quad)
