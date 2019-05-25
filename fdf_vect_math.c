@@ -41,7 +41,25 @@ t_vert *transl_vert(t_app *st_app, t_map *st_map)
 	return (st_app->vert_buff);
 }
 
-t_quad *scale_vect(t_map *st_map, t_quad *st_quad)
+t_vert *scale_vect(t_app *st_app, t_map *st_map)
 {
-	return NULL;
+	int buff;
+	double dif_x;
+	double dif_z;
+
+	buff = 0;
+	dif_x = 0;
+	dif_z = 0;
+	while (buff < ((st_map->x) * (st_map->z)))
+	{
+		if (st_app->vert_buff[buff].x > st_app->x_win_sz)
+		{
+			dif_x = st_app->vert_buff[buff].x;
+		}
+		if (st_app->vert_buff[buff].z > st_app->y_win_sz)
+		{
+			dif_z = st_app->vert_buff[buff].z;
+		}
+	}
+	buff = 0;
 }

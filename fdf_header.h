@@ -72,11 +72,8 @@ typedef struct	s_app
 {
 	t_quad		*quad_buff;
 	t_vert		*vert_buff;
-
-	double 		neg_x;
-	double		neg_z;
-	double		scale_x;
-	double		scale_y;
+	int			x_win_sz;
+	int			y_win_sz;
 }				t_app;
 
 void			window_init(t_ptr **st_ptr);
