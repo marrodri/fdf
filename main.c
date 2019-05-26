@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 
 	// printf("drawing a line\n");
 	// window_init(&st_mlx);
- 	if (argc == 2)
+ 	if (argc == 3)
  	{
  		fd = open(argv[1], O_RDONLY);
  		if(!(check_valid_file(fd, &st_map, &st_app)))
@@ -56,7 +56,7 @@ int main(int argc, char **argv)
 		// 	buff++;
 		// }
 		// printf("!!!!!! QUAD_BUFFER !!!!!!\n");
-		st_app->vert_buff = iso_view(st_map, st_app->vert_buff);
+		st_app->vert_buff = transf_view(st_map, st_app->vert_buff, argv[2][0]);
 		st_app->vert_buff = transl_vert(st_app, st_map);
 		set_win_sz(&st_app, st_map);
 		st_app->vert_buff = scale_vect(st_app, st_map);
@@ -76,7 +76,7 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		ft_putstr("Usage : ./fdf <filename> [ case_size z_size ]\n");
+		ft_putstr("Usage : ./fdf <filename> 'view projection' [i = isometric, p = parallel]\n");
 	}
 	// sleep(5);
 	return (0);

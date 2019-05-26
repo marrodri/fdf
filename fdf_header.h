@@ -72,7 +72,7 @@ void			window_init(t_ptr **st_ptr);
 void			set_win_sz(t_app **st_app, t_map *st_map);
 int				check_valid_file(const int fd, t_map **st_map, t_app **st_app);
 int				**create_map(int **map, int y, int x);
-t_vert 			*iso_view(t_map *st_map ,t_vert *st_vert);
+t_vert			*transf_view(t_map *st_map, t_vert *st_vert, char vw);
 t_vert			*transl_vert(t_app *st_app, t_map *st_map);
 
 t_vert			*setvert_buff(char **str_map, t_map *st_map, t_vert *st_vert);
