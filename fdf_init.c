@@ -12,11 +12,11 @@
 
 #include "fdf_header.h"
 
-// int win_scale(int size)
-// {
-// 	size = 0;
-// 	return (size);
-// }
+int deal_key(int key, void *param)
+{
+	sleep(5);
+	exit(1);
+}
 
 int		mlx_pixel_image(int x, int z, char *addr, int bpp)
 {
@@ -84,5 +84,7 @@ void	fdf_init(t_ptr **st_ptr, t_img **st_img, t_map *st_map, t_app *st_app)
 		buff++;
 	}
 	mlx_put_image_to_window((*st_ptr)->mlx_ptr, (*st_ptr)->win_ptr, (*st_ptr)->img_ptr, 0, 0);
+	mlx_key_hook((*st_ptr)->win_ptr, deal_key, (void *)0);
 	mlx_loop((*st_ptr)->mlx_ptr);
+	return ;
 }
