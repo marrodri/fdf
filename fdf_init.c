@@ -15,8 +15,9 @@
 int deal_key(int key, void *param)
 {
 	//free everything here
-	sleep(5);
+	sleep(20);
 	exit(1);
+	return (0);
 }
 
 int		mlx_pixel_image(int x, int z, char *addr, int bpp)

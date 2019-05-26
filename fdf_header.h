@@ -21,12 +21,6 @@
 
 #include <stdio.h>
 
-typedef struct	s_win
-{
-	int			x_win_sz;
-	int			y_win_sz;
-}				t_win;
-
 typedef struct t_vect
 {
 	double dx;
