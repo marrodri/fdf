@@ -12,11 +12,11 @@ void set_win_sz(t_app **st_app, t_map *st_map)
 	{
 		if ((*st_app)->vert_buff[buff].x > (*st_app)->x_win_sz)
 		{
-			(*st_app)->x_win_sz = (*st_app)->vert_buff[buff].x;
+			(*st_app)->x_win_sz = (*st_app)->vert_buff[buff].x + 10;
 		}
 		if ((*st_app)->vert_buff[buff].z > (*st_app)->y_win_sz)
 		{
-			(*st_app)->y_win_sz = (*st_app)->vert_buff[buff].z;
+			(*st_app)->y_win_sz = (*st_app)->vert_buff[buff].z + 10;
 		}
 		buff++;
 	}

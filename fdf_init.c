@@ -70,7 +70,7 @@ void	fdf_init(t_ptr **st_ptr, t_img **st_img, t_map *st_map, t_app *st_app)
 		return ;
 
 	(*st_ptr)->mlx_ptr = mlx_init();
-	(*st_ptr)->win_ptr = mlx_new_window((*st_ptr)->mlx_ptr, WIN_SZ, WIN_SZ, "test window");
+	(*st_ptr)->win_ptr = mlx_new_window((*st_ptr)->mlx_ptr, st_app->x_win_sz, st_app->y_win_sz, "test window");
 	(*st_ptr)->img_ptr = mlx_new_image((*st_ptr)->mlx_ptr, WIN_SZ, WIN_SZ);
 	(*st_img)->addr = mlx_get_data_addr((*st_ptr)->img_ptr, &(*st_img)->bpp, &(*st_img)->sl, &(*st_img)->endian);
 	(*st_img)->bpp /= 8;

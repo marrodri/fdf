@@ -69,6 +69,7 @@ typedef struct	s_app
 }				t_app;
 
 void			window_init(t_ptr **st_ptr);
+void			set_win_sz(t_app **st_app, t_map *st_map);
 int				check_valid_file(const int fd, t_map **st_map, t_app **st_app);
 int				**create_map(int **map, int y, int x);
 t_vert 			*iso_view(t_map *st_map ,t_vert *st_vert);
