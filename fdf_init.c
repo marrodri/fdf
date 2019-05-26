@@ -14,7 +14,7 @@
 
 int deal_key(int key, void *param)
 {
-	sleep(5);
+	// sleep(5);
 	exit(1);
 }
 
