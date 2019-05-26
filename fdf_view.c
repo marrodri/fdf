@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf_view.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: marrodri <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/26 16:14:40 by marrodri          #+#    #+#             */
+/*   Updated: 2019/05/26 16:14:43 by marrodri         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "fdf_header.h"
 
@@ -23,7 +34,7 @@ t_vert *transf_view(t_map *st_map, t_vert *st_vert, char vw)
 	if(vw == 'i')
 		ang = 0.523599;
 	else if (vw == 'p')
-		ang = 1.134459;
+		ang = 1;
 	while (buff < ((st_map->x) * (st_map->z)))
 	{
 		x = st_vert[buff].x;
@@ -34,10 +45,4 @@ t_vert *transf_view(t_map *st_map, t_vert *st_vert, char vw)
 		buff++;
 	}
 	return (st_vert);
-}
-
-t_quad *parallel_view(t_quad *st_quad)
-{
-	//TODO calculate the coords to the parallel view
-	return (st_quad);
 }

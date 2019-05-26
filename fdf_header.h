@@ -27,6 +27,17 @@ typedef struct	s_win
 	int			y_win_sz;
 }				t_win;
 
+typedef struct t_vect
+{
+	double dx;
+	double dz;
+	double steps;
+	double x_inc;
+	double z_inc;
+	double x;
+	double z;
+}				s_vect;
+
 typedef struct	s_vert
 {
 	double		x;
