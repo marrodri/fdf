@@ -12,23 +12,15 @@
 
 #include "fdf_header.h"
 
-int	check_valid_file(const int fd, t_map **st_map, t_app **st_app)
+char	*file_to_str(t_map **st_map, char *str_map, int fd)
 {
-	char *line;
-	char *str_map;
-	char *temp;
-	char **splt_map;
-	int count;
+	char	*line;
+	char	*temp;
+	int		count;
 
-	if ((*st_map = malloc(sizeof(t_map))) == NULL)
-		return (0);
-	if((*st_app = malloc(sizeof(t_app))) == NULL)
-		return (0);
 	count = 0;
-	(*st_map)->x = 0;
-	(*st_map)->z = 0;
 	str_map = ft_strnew(1);
-	while(get_next_line(fd, &line))
+	while (get_next_line(fd, &line))
 	{
 		count = ft_word_count(line, ' ');
 		if ((*st_map)->x == 0)
@@ -44,24 +36,37 @@ int	check_valid_file(const int fd, t_map **st_map, t_app **st_app)
 		free(temp);
 		(*st_map)->z++;
 	}
+	return (str_map);
+}
+
+int	check_valid_file(const int fd, t_map **st_map, t_app **st_app)
+{
+	char	*str_map;
+	char	**splt_map;
+	char	*temp;
+	int		z;
+
+	if ((*st_map = malloc(sizeof(t_map))) == NULL)
+		return (0);
+	if ((*st_app = malloc(sizeof(t_app))) == NULL)
+		return (0);
+	(*st_map)->x = 0;
+	(*st_map)->z = 0;
+	str_map = file_to_str(&(*st_map), str_map, fd);
 	temp = str_map;
 	str_map = ft_strtrim(str_map);
 	splt_map = ft_strsplit(str_map, '\n');
 	(*st_app)->vert_buff = setvert_buff(splt_map, *st_map, (*st_app)->vert_buff);
 	free(temp);
 	free(str_map);
-	free(line);
-
-	int x = 0;
-	if(splt_map)
+	if (splt_map)
 	{
-		while(splt_map[x])
+		while (z < ((*st_map)->z - 1))
 		{
-			free(splt_map[x]);
-			x++;
+			free(splt_map[z]);
+			z++;
 		}
 	}
 	free(splt_map);
-
 	return (1);
 }
