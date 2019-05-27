@@ -20,8 +20,6 @@ int main(int argc, char **argv)
 	t_img	*st_img;
 	int		fd;
 
-	// printf("drawing a line\n");
-	// window_init(&st_mlx);
  	if (argc == 3)
  	{
  		fd = open(argv[1], O_RDONLY);

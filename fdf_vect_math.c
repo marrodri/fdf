@@ -50,8 +50,6 @@ t_vert *scale_vect(t_app *st_app, t_map *st_map)
 	buff = 0;
 	dif_x = 0;
 	dif_z = 0;
-	// st_app->x_win_sz = WIN_SZ;
-	// st_app->y_win_sz = WIN_SZ;
 	while (buff < ((st_map->x) * (st_map->z)))
 	{
 		if (st_app->vert_buff[buff].x > st_app->x_win_sz)

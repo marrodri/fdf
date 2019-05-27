@@ -35,13 +35,13 @@ int	check_valid_file(const int fd, t_map **st_map, t_app **st_app)
 			(*st_map)->x = count;
 		if (count != (*st_map)->x)
 			return (0);
-		temp = ft_strjoin(str_map, line);
+		temp = str_map;
+		str_map = ft_strjoin(str_map, line);
+		free(temp);
 		free(line);
-		free(str_map);
-		str_map = temp;
-		temp = ft_strjoin(str_map, "\n");
-		free(str_map);
-		str_map = temp;
+		temp = str_map;
+		str_map = ft_strjoin(str_map, "\n");
+		free(temp);
 		(*st_map)->z++;
 	}
 	temp = str_map;
@@ -50,11 +50,12 @@ int	check_valid_file(const int fd, t_map **st_map, t_app **st_app)
 	(*st_app)->vert_buff = setvert_buff(splt_map, *st_map, (*st_app)->vert_buff);
 	free(temp);
 	free(str_map);
+	free(line);
 
 	int x = 0;
 	if(splt_map)
 	{
-		while(x < ((*st_map)->x) - 1)
+		while(splt_map[x])
 		{
 			free(splt_map[x]);
 			x++;
