@@ -12,10 +12,6 @@
 
 #include "fdf_header.h"
 
-void	free_app(t_app *st_app)
-{
-	return ;
-}
 
 void	free_vect(t_vect *st_vect)
 {
@@ -36,3 +32,11 @@ void free_img_ptr(t_img *st_img, t_ptr *st_ptr)
 {
 	return ;
 }
+
+// void	free_app(t_app *st_app)
+// {
+// 	free(st_app->x_win_sz);
+// 	free(st_app->y_win_sz);
+// 	free(st_app);
+// 	return ;
+// }
