@@ -19,7 +19,7 @@ t_vert	*scale_xy(t_app *st_app, t_map *st_map, double out_x, double out_z)
 	if (out_x > 0)
 	{
 		buff = 0;
-		out_x = st_app->x_win_sz / out_x;
+		out_x = st_app->x_sz / out_x;
 		while (buff < ((st_map->x) * (st_map->z)))
 		{
 			st_app->vert_buff[buff].x = st_app->vert_buff[buff].x * out_x;
@@ -29,7 +29,7 @@ t_vert	*scale_xy(t_app *st_app, t_map *st_map, double out_x, double out_z)
 	if (out_z > 0)
 	{
 		buff = 0;
-		out_z = st_app->y_win_sz / out_z;
+		out_z = st_app->y_sz / out_z;
 		while (buff < ((st_map->x) * (st_map->z)))
 		{
 			st_app->vert_buff[buff].z = st_app->vert_buff[buff].z * out_z;
@@ -79,12 +79,12 @@ t_vert	*scale_vect(t_app *st_app, t_map *st_map)
 	out_z = 0;
 	while (buff < ((st_map->x) * (st_map->z)))
 	{
-		if (st_app->vert_buff[buff].x > st_app->x_win_sz)
+		if (st_app->vert_buff[buff].x > st_app->x_sz)
 		{
 			if (out_x < st_app->vert_buff[buff].x)
 				out_x = st_app->vert_buff[buff].x;
 		}
-		if (st_app->vert_buff[buff].z > st_app->y_win_sz)
+		if (st_app->vert_buff[buff].z > st_app->y_sz)
 		{
 			if (out_z < st_app->vert_buff[buff].z)
 				out_z = st_app->vert_buff[buff].z;

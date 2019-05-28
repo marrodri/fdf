@@ -15,7 +15,6 @@
 int		main(int argc, char **argv)
 {
 	t_app	*st_app;
-	t_ptr	*st_ptr;
 	t_map	*st_map;
 	t_img	*st_img;
 	int		fd;
@@ -34,7 +33,7 @@ int		main(int argc, char **argv)
 		st_app->vert_buff = scale_vect(st_app, st_map);
 		st_app->quad_buff = quad_buff_malloc(st_app->vert_buff,
 										st_map, st_app->quad_buff);
-		fdf_init(&st_ptr, &st_img, st_map, st_app);
+		fdf_init(&st_img, st_map, st_app);
 	}
 	else
 		ft_putstr("Usage : ./fdf <filename> ");
