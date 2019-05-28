@@ -25,9 +25,6 @@ typedef struct s_vect
 {
 	double dx;
 	double dz;
-	double steps;
-	double x_inc;
-	double z_inc;
 	double x;
 	double z;
 }				t_vect;
@@ -83,6 +80,6 @@ t_vert			*vert_buff_malloc(char **str_map, t_map *st_map, t_vert *st_vert);
 t_vert			*scale_vect(t_app *st_app, t_map *st_map);
 t_quad			*quad_buff_malloc(t_vert *st_vert, t_map *st_map, t_quad *st_quad);
 void			fdf_init(t_ptr **st_ptr, t_img **st_img, t_map *st_map, t_app *st_app);
-void			draw_line_img(double x0, double z0, double x1, double z1, t_img *st_img);
+void			draw_img(t_app *st_app, t_map *st_map, t_img **st_img);
 void			free_app(t_app *st_app);
 #endif
