@@ -12,7 +12,7 @@
 
 #include "fdf_header.h"
 
-int main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	t_app	*st_app;
 	t_ptr	*st_ptr;
@@ -20,11 +20,11 @@ int main(int argc, char **argv)
 	t_img	*st_img;
 	int		fd;
 
- 	if (argc == 3)
- 	{
- 		fd = open(argv[1], O_RDONLY);
- 		if(!(check_valid_file(fd, &st_map, &st_app)))
- 		{
+	if (argc == 3)
+	{
+		fd = open(argv[1], O_RDONLY);
+		if (!(check_valid_file(fd, &st_map, &st_app)))
+		{
 			ft_putstr("Found wrong line length. Exiting.\n");
 			return (0);
 		}
@@ -32,12 +32,12 @@ int main(int argc, char **argv)
 		st_app->vert_buff = transl_vert(st_app, st_map);
 		set_win_sz(&st_app, st_map);
 		st_app->vert_buff = scale_vect(st_app, st_map);
-		st_app->quad_buff = setquad_buff(st_app->vert_buff, st_map, st_app->quad_buff);
+		st_app->quad_buff = quad_buff_malloc(st_app->vert_buff,
+										st_map, st_app->quad_buff);
 		fdf_init(&st_ptr, &st_img, st_map, st_app);
 	}
 	else
-	{
-		ft_putstr("Usage : ./fdf <filename> 'view projection' [i = isometric, p = parallel]\n");
-	}
+		ft_putstr("Usage : ./fdf <filename> ");
+		ft_putstr("'view projection' [i = isometric, p = parallel]\n");
 	return (0);
 }

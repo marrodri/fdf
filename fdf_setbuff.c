@@ -12,7 +12,15 @@
 
 #include "fdf_header.h"
 
-t_vert	*setvert_buff(char **str_map, t_map *st_map, t_vert *st_vert)
+// t_vert	*assign_buff(t_vert *st_vert, int x, int y, int z, int buff)
+// {
+// 	st_vert[buff].x = (x * 25);
+// 	st_vert[buff].y = (y * 25); 
+// 	st_vert[buff].z = (z * 25);
+// 	return (st_vert);
+// }
+
+t_vert	*vert_buff_malloc(char **str_map, t_map *st_map, t_vert *st_vert)
 {
 	int size;
 	int buff;
@@ -20,9 +28,7 @@ t_vert	*setvert_buff(char **str_map, t_map *st_map, t_vert *st_vert)
 	int z;
 	int i;
 
-	x = 0;
 	z = 0;
-	i = 0;
 	buff = 0;
 	size = (st_map->x) * (st_map->z);
 	st_vert = malloc(size * sizeof(t_vert));
@@ -50,7 +56,7 @@ t_vert	*setvert_buff(char **str_map, t_map *st_map, t_vert *st_vert)
 	return (st_vert);
 }
 
-t_quad	*setquad_buff(t_vert *st_vert, t_map *st_map, t_quad *st_quad)
+t_quad	*quad_buff_malloc(t_vert *st_vert, t_map *st_map, t_quad *st_quad)
 {
 	int buff;
 	int i;
@@ -64,14 +70,12 @@ t_quad	*setquad_buff(t_vert *st_vert, t_map *st_map, t_quad *st_quad)
 	i = 0;
 	while (buff < quad_len)
 	{
-		// printf("quad buff|%d|\n", buff);
 		st_quad[buff].quad_vert[0] = st_vert[i];
 		st_quad[buff].quad_vert[1] = st_vert[i + 1];
 		st_quad[buff].quad_vert[2] = st_vert[i + st_map->x];
 		st_quad[buff].quad_vert[3] = st_vert[i + st_map->x + 1];
 		if ((i + 1) == (vert_len - 1))
 		{
-			// printf("+++pass because i|%d| == x|%d|+++\n", i + 1, vert_len - 1);
 			vert_len = st_map->x + vert_len;
 			i++;
 		}
