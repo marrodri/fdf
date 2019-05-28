@@ -21,7 +21,7 @@
 
 #include <stdio.h>
 
-typedef struct s_vect
+typedef struct	s_vect
 {
 	double dx;
 	double dz;
