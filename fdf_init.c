@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf_set_.c                                         :+:      :+:    :+:   */
+/*   fdf_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marrodri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/18 11:40:16 by marrodri          #+#    #+#             */
-/*   Updated: 2019/03/18 11:40:18 by marrodri         ###   ########.fr       */
+/*   Created: 2019/05/27 18:05:13 by marrodri          #+#    #+#             */
+/*   Updated: 2019/05/27 18:05:16 by marrodri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,22 @@ int deal_key(int key, void *param)
 
 void	fdf_init(t_ptr **st_ptr, t_img **st_img, t_map *st_map, t_app *st_app)
 {
-	int i;
-	int buff;
-	t_vert *verts;
-
-	buff = 0;
-	i = 0;
+	void *mlx;
+	void *win;
+	void *img;
 
 	if ((*st_ptr = malloc(sizeof(t_ptr))) == NULL)
 		return ;
 	if ((*st_img = malloc(sizeof(t_img))) == NULL)
 		return ;
-
-	(*st_ptr)->mlx_ptr = mlx_init();
-	(*st_ptr)->win_ptr = mlx_new_window((*st_ptr)->mlx_ptr, st_app->x_win_sz, st_app->y_win_sz, "test window");
-	(*st_ptr)->img_ptr = mlx_new_image((*st_ptr)->mlx_ptr, WIN_SZ, WIN_SZ);
-	(*st_img)->addr = mlx_get_data_addr((*st_ptr)->img_ptr, &(*st_img)->bpp, &(*st_img)->sl, &(*st_img)->endian);
+	mlx = mlx_init();
+	win = mlx_new_window(mlx, st_app->x_win_sz, st_app->y_win_sz, "test window");
+	img = mlx_new_image(mlx, WIN_SZ, WIN_SZ);
+	(*st_img)->addr = mlx_get_data_addr(img, &(*st_img)->bpp, &(*st_img)->sl, &(*st_img)->endian);
 	(*st_img)->bpp /= 8;
 	draw_img(st_app, st_map, &(*st_img));
-	mlx_put_image_to_window((*st_ptr)->mlx_ptr, (*st_ptr)->win_ptr, (*st_ptr)->img_ptr, 0, 0);
-	mlx_key_hook((*st_ptr)->win_ptr, deal_key, (void *)0);
-	mlx_loop((*st_ptr)->mlx_ptr);
+	mlx_put_image_to_window(mlx, win, img, 0, 0);
+	mlx_key_hook(win, deal_key, (void *)0);
+	mlx_loop(mlx);
 	return ;
 }

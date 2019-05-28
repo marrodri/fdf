@@ -19,8 +19,6 @@
 # include "./includes/libft/libft.h"
 # include "mlx.h"
 
-#include <stdio.h>
-
 typedef struct	s_vect
 {
 	double dx;

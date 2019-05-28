@@ -12,6 +12,23 @@
 
 #include "fdf_header.h"
 
+void	free_doublestr(char **splt_map, int size)
+{
+	int i;
+
+	i = 0;
+	if (splt_map)
+	{
+		while (i < size)
+		{
+			free(splt_map[i]);
+			i++;
+		}
+	}
+	free(splt_map);
+	return ;
+}
+
 char	*file_to_str(t_map **st_map, char *str_map, int fd)
 {
 	char	*line;
@@ -39,12 +56,13 @@ char	*file_to_str(t_map **st_map, char *str_map, int fd)
 	return (str_map);
 }
 
-int	check_valid_file(const int fd, t_map **st_map, t_app **st_app)
+int		check_valid_file(const int fd, t_map **st_map, t_app **st_app)
 {
 	char	*str_map;
 	char	**splt_map;
 	char	*temp;
 	int		z;
+	t_vert	*vert_buff;
 
 	if ((*st_map = malloc(sizeof(t_map))) == NULL)
 		return (0);
@@ -52,21 +70,14 @@ int	check_valid_file(const int fd, t_map **st_map, t_app **st_app)
 		return (0);
 	(*st_map)->x = 0;
 	(*st_map)->z = 0;
+	vert_buff = (*st_app)->vert_buff;
 	str_map = file_to_str(&(*st_map), str_map, fd);
 	temp = str_map;
 	str_map = ft_strtrim(str_map);
 	splt_map = ft_strsplit(str_map, '\n');
-	(*st_app)->vert_buff = vert_buff_malloc(splt_map, *st_map, (*st_app)->vert_buff);
+	(*st_app)->vert_buff = vert_buff_malloc(splt_map, *st_map, vert_buff);
 	free(temp);
 	free(str_map);
-	if (splt_map)
-	{
-		while (z < ((*st_map)->z - 1))
-		{
-			free(splt_map[z]);
-			z++;
-		}
-	}
-	free(splt_map);
+	free_doublestr(splt_map, (*st_map)->z - 1);
 	return (1);
 }
