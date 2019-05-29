@@ -66,10 +66,10 @@ int				check_valid_file(const int fd, t_map **st_map, t_app **st_app);
 int				**create_map(int **map, int y, int x);
 t_vert			*transf_view(t_map *st_map, t_vert *st_vert, char vw);
 t_vert			*transl_vert(t_app *st_app, t_map *st_map);
-t_vert			*vert_buff_malloc(char **str_map, t_map *st_map, t_vert *st_vert);
+void			vert_buff_malloc(char **str_map, t_map *st_map, t_vert **st_vert);
 t_vert			*scale_vect(t_app *st_app, t_map *st_map);
 t_quad			*quad_buff_malloc(t_vert *st_vert, t_map *st_map, t_quad *st_quad);
-void			fdf_init(t_img **st_img, t_map *st_map, t_app *st_app);
+void			fdf_init(t_img *st_img, t_map *st_map, t_app *st_app);
 void			draw_img(t_app *st_app, t_map *st_map, t_img **st_img);
 void			free_app(t_app *st_app);
 #endif

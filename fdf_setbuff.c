@@ -12,46 +12,41 @@
 
 #include "fdf_header.h"
 
-t_vert	*assign_buff(t_vert *st_vert, char **str_map, int z, int i)
+t_vert	*assign_buff(t_vert *st_vert, char **str_map)
 {
 	int buff;
 	int x;
+	int z;
+	int i;
 
 	buff = 0;
+	z = -1;
 	while (str_map[++z])
 	{
 		x = 0;
 		i = -1;
 		while (str_map[z][++i])
-		{
-			if (str_map[z][i] != ' ' && str_map[z][i])
+			if (str_map[z][i] != ' ' && str_map[z][i] &&
+				(x == 0 || str_map[z][i - 1] == ' '))
 			{
-				if (x == 0 || str_map[z][i - 1] == ' ')
-				{
-					st_vert[buff].x = (x * 25);
-					st_vert[buff].y = 25 * ft_atoi(&str_map[z][i]);
-					st_vert[buff].z = (z * 25);
-					x++;
-					buff++;
-				}
+				st_vert[buff].x = (x++ * 25);
+				st_vert[buff].y = 25 * ft_atoi(&str_map[z][i]);
+				st_vert[buff++].z = (z * 25);
 			}
-		}
 	}
 	return (st_vert);
 }
 
-t_vert	*vert_buff_malloc(char **str_map, t_map *st_map, t_vert *st_vert)
+void	vert_buff_malloc(char **str_map, t_map *st_map, t_vert **st_vert)
 {
 	int size;
 	int z;
 	int i;
 
 	size = (st_map->x) * (st_map->z);
-	z = -1;
 	i = -1;
-	st_vert = malloc(size * sizeof(t_vert));
-	st_vert = assign_buff(st_vert, str_map, z, i);
-	return (st_vert);
+	*st_vert = malloc(size * sizeof(t_vert));
+	*st_vert = assign_buff(*st_vert, str_map);
 }
 
 t_quad	*quad_buff_malloc(t_vert *st_vert, t_map *st_map, t_quad *st_quad)

@@ -1,6 +1,6 @@
-cc  -I ./includes/minilibx_macos main.c -L ./includes/minilibx_macos -lmlx -framework OpenGL -framework AppKit
+cc  -I ./includes/minilibx_macos main.c -L ./includes/minilibx_macos -lmlx -framework OpenGL -framework AppKit -fsanitize=address
 
-cc  -I ./includes/minilibx_macos main.c fdf_*.c  
+cc  -I ./includes/minilibx_macos main.c fdf_*.c  -fsanitize=address
 
 
 -L ./includes/minilibx_macos -lmlx -framework OpenGL -framework AppKit -L ./includes/libft -lft

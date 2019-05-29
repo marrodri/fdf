@@ -65,5 +65,6 @@ void	draw_img(t_app *st_app, t_map *st_map, t_img **st_img)
 		draw_line_img(verts[1], verts[3], st_vect, *st_img);
 		buff++;
 	}
+	free(st_vect);
 	return ;
 }

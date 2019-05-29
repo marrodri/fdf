@@ -41,7 +41,7 @@ char		*ft_strtrim(char const *s)
 	if (s == NULL)
 		return (NULL);
 	size = ft_strlen(s);
-	str = (char *)malloc((size + 1) * sizeof(char*));
+	str = (char *)malloc((size + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);
 	i = ft_check_space_beg(s, i);
@@ -52,5 +52,5 @@ char		*ft_strtrim(char const *s)
 			break ;
 	}
 	str[j] = '\0';
-	return (ft_strdup(str));
+	return (str);
 }

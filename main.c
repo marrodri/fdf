@@ -16,11 +16,12 @@ int		main(int argc, char **argv)
 {
 	t_app	*st_app;
 	t_map	*st_map;
-	t_img	*st_img;
+	t_img	st_img;
 	int		fd;
 
 	if (argc == 3)
 	{
+
 		fd = open(argv[1], O_RDONLY);
 		if (!(check_valid_file(fd, &st_map, &st_app)))
 		{

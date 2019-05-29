@@ -30,7 +30,7 @@ static char		*ft_set_word(char *s, char c, int *i)
 	wrd[index] = '\0';
 	while (s[*i] == c && s[*i])
 		*i += 1;
-	return (ft_strdup(wrd));
+	return (wrd);
 }
 
 char			**ft_strsplit(char const *s, char c)
