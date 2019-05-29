@@ -32,8 +32,8 @@ int		main(int argc, char **argv)
 		st_app->vert_buff = transl_vert(st_app, st_map);
 		set_win_sz(&st_app, st_map);
 		st_app->vert_buff = scale_vect(st_app, st_map);
-		st_app->quad_buff = quad_buff_malloc(st_app->vert_buff,
-										st_map, st_app->quad_buff);
+		st_app->quad_buff = quad_buff_malloc
+				(st_app->vert_buff, st_map, st_app->quad_buff);
 		fdf_init(&st_img, st_map, st_app);
 	}
 	else

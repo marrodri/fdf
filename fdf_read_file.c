@@ -26,7 +26,7 @@ void	free_doublestr(char **splt_map)
 	return ;
 }
 
-void	file_to_str(t_map **st_map, char **str_map, int fd)
+int		file_to_str(t_map **st_map, char **str_map, int fd)
 {
 	char	*line;
 	char	*temp;
@@ -40,7 +40,7 @@ void	file_to_str(t_map **st_map, char **str_map, int fd)
 		if ((*st_map)->x == 0)
 			(*st_map)->x = count;
 		if (count != (*st_map)->x)
-			return ;
+			return (0);
 		temp = *str_map;
 		*str_map = ft_strjoin(*str_map, line);
 		free(temp);
@@ -50,6 +50,7 @@ void	file_to_str(t_map **st_map, char **str_map, int fd)
 		free(temp);
 		(*st_map)->z++;
 	}
+	return (1);
 }
 
 int		check_valid_file(const int fd, t_map **st_map, t_app **st_app)
@@ -64,7 +65,8 @@ int		check_valid_file(const int fd, t_map **st_map, t_app **st_app)
 		return (0);
 	(*st_map)->x = 0;
 	(*st_map)->z = 0;
-	file_to_str(st_map, &str_map, fd);
+	if (!(file_to_str(st_map, &str_map, fd)))
+		return (0);
 	temp = str_map;
 	str_map = ft_strtrim(str_map);
 	splt_map = ft_strsplit(str_map, '\n');

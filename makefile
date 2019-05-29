@@ -13,8 +13,28 @@
 NAME = fdf
 
 CFLAGS = -Wall -Wextra -Werror
+INC = -I ./includes/minilibx_macos
+MLX = -L ./includes/minilibx_macos -lmlx -framework OpenGL -framework AppKit
+LIBFT = -L ./includes/libft -lft
 
+SRC	=	fdf_init.c fdf_main.c fdf_read_file.c \
+		fdf_setbuff.c fdf_set_win.c fdf_vect_math.c \
+		fdf_view.c fdf_drawline.c
 
+OBJ = $(SRC:.c=.o)
+
+all: $(NAME)
+
+$(NAME): 
+	gcc $(CFLAGS) $(INC) $(SRC) $(MLX) $(LIBFT) -o $(NAME)
+
+clean:
+	rm -rf $(OBJ)
+
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean all
 
 
 
