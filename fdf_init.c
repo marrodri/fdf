@@ -12,9 +12,17 @@
 
 #include "fdf_header.h"
 
+int close_win_X(void *param)
+{
+	(void)param;
+	exit(0);
+	return (0);
+}
+
 int		deal_key(int key, void *param)
 {
-	exit(1);
+	if(key == 27)
+		exit(1);
 	return (0);
 }
 
@@ -36,6 +44,7 @@ void	fdf_init(t_img **s_img, t_map *s_map, t_app *s_app)
 	draw_img(s_app, s_map, &(img));
 	mlx_put_image_to_window(p_mlx, p_win, p_img, 0, 0);
 	mlx_key_hook(p_win, deal_key, (void *)0);
+	mlx_hook(p_win, 17, (1L << 17), close_win_X ,(void*)0);
 	mlx_loop(p_mlx);
 	return ;
 }
