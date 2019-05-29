@@ -40,11 +40,8 @@ t_vert	*assign_buff(t_vert *st_vert, char **str_map)
 void	vert_buff_malloc(char **str_map, t_map *st_map, t_vert **st_vert)
 {
 	int size;
-	int z;
-	int i;
 
 	size = (st_map->x) * (st_map->z);
-	i = -1;
 	*st_vert = malloc(size * sizeof(t_vert));
 	*st_vert = assign_buff(*st_vert, str_map);
 }

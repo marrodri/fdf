@@ -21,9 +21,9 @@ int close_win_X(void *param)
 
 int		deal_key(int key, void *param)
 {
-	// if(key == 27)
-	(void)param;
-		exit(1);
+	if(key == 27)
+		(void)param;
+	exit(1);
 	return (0);
 }
 

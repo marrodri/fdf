@@ -57,7 +57,6 @@ int		check_valid_file(const int fd, t_map **st_map, t_app **st_app)
 	char	*str_map;
 	char	**splt_map;
 	void	*temp;
-	int		z;
 
 	if ((*st_map = malloc(sizeof(t_map))) == NULL)
 		return (0);
