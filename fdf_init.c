@@ -21,7 +21,8 @@ int close_win_X(void *param)
 
 int		deal_key(int key, void *param)
 {
-	if(key == 27)
+	// if(key == 27)
+	(void)param;
 		exit(1);
 	return (0);
 }
@@ -43,7 +44,7 @@ void	fdf_init(t_img **s_img, t_map *s_map, t_app *s_app)
 	img->bpp /= 8;
 	draw_img(s_app, s_map, &(img));
 	mlx_put_image_to_window(p_mlx, p_win, p_img, 0, 0);
-	mlx_key_hook(p_win, deal_key, (void *)0);
+	mlx_hook(p_win, 2, 27, deal_key, (void *)0);
 	mlx_hook(p_win, 17, (1L << 17), close_win_X ,(void*)0);
 	mlx_loop(p_mlx);
 	return ;
