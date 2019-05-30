@@ -16,7 +16,7 @@
 # define WIN_SZ 1000
 # include <math.h>
 # include <fcntl.h>
-# include "./includes/libft/libft.h"
+# include "libft/libft.h"
 # include "mlx.h"
 
 typedef struct	s_vect
