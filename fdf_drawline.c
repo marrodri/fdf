@@ -12,12 +12,21 @@
 
 #include "fdf_header.h"
 
+<<<<<<< HEAD
 void	mlx_pixel_image(int x, int z, char *addr, int bpp)
 {
 	if (x < 0 || z < 0 || x >= WIN_SZ || z >= WIN_SZ)
 		return ;
 	*((int *)(addr + (x + z * WIN_SZ) * bpp)) = 0xffffff;
 	return ;
+=======
+int		mlx_pixel_image(int x, int z, char *addr, int bpp)
+{
+	if (x < 0 || z < 0 || x >= WIN_SZ || z >= WIN_SZ)
+		return (0);
+	*((int *)(addr + (x + z * WIN_SZ) * bpp)) = 0x80ff00;
+	return (1);
+>>>>>>> b94bef061e98bbfc64216e82a0844bac550a0d3a
 }
 
 void	draw_line_img(t_vert v0, t_vert v1, t_vect *st_vect, t_img *st_img)
